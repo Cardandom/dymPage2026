@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-brand-blue: #0070f3;
+  --color-brand-neon: #FF860E;
+  --color-brand-purple: #3C00BE;
+  
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@layer base {
+  body {
+    @apply bg-brand-purple text-white selection:bg-brand-neon selection:text-white antialiased;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv02";
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply backdrop-blur-xl bg-white/8 border border-white/12;
+  }
+  
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-white via-white/90 to-white/70;
+  }
+  
+  .text-gradient-neon {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-neon via-white to-brand-purple;
+  }
+  
+  .glow-neon {
+    box-shadow: 0 0 24px rgba(255, 134, 14, 0.45);
+  }
+  
+  .mask-radial {
+    mask-image: radial-gradient(circle at center, black, transparent);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+::selection {
+  background: var(--color-brand-neon);
+  color: white;
+}
