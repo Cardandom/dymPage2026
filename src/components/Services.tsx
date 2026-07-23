@@ -79,7 +79,7 @@ export default function Services() {
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
               whileHover={{ y: -10 }}
-              className={`group p-8 rounded-3xl glass backdrop-blur-2xl border ${service.borderColor} bg-gradient-to-br ${service.color} hover:border-brand-neon/50 transition-all duration-500 cursor-pointer overflow-hidden relative`}
+              className={`group p-8 rounded-3xl glass backdrop-blur-2xl border ${service.borderColor} bg-linear-to-br ${service.color} hover:border-brand-neon/50 transition-all duration-500 cursor-pointer overflow-hidden relative`}
             >
               <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-brand-neon/20 transition-colors" />
               

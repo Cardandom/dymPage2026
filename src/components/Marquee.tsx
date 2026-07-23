@@ -23,11 +23,11 @@ export default function Marquee() {
   ];
 
   return (
-    <div className="py-20 overflow-hidden border-y border-white/5 bg-black whitespace-nowrap">
+    <div className="py-20 border-b-2 overflow-hidden border-y border-black bg-white whitespace-nowrap">
       <div ref={tickerRef} className="flex gap-20 items-center w-max">
         {[...items, ...items].map((item, i) => (
           <div key={i} className="flex items-center gap-20">
-            <span className="text-6xl md:text-8xl font-display font-black text-white/5 uppercase tracking-tighter hover:text-brand-neon transition-colors duration-500">
+            <span className="text-6xl md:text-8xl font-display font-black text-black/95 uppercase tracking-tighter hover:text-brand-neon transition-colors duration-500">
               {item}
             </span>
             <div className="w-12 h-12 rounded-full border border-brand-neon/20 flex items-center justify-center">

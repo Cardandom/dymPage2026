@@ -3,49 +3,73 @@ import { motion } from 'motion/react';
 const steps = [
   {
     num: "01",
-    title: "Auditoría Digital",
-    desc: "Análisis profundo de tu presencia digital actual y detección de fugas de ingresos."
+    title: "Auditoria Digital",
+    desc: "Analisis profundo de tu presencia digital actual y deteccion de fugas de ingresos."
   },
   {
     num: "02",
     title: "Estrategia de Escalado",
-    desc: "Hoja de ruta personalizada utilizando IA para maximizar el crecimiento en tiempo récord."
+    desc: "Hoja de ruta personalizada utilizando IA para maximizar el crecimiento en tiempo record."
   },
   {
     num: "03",
-    title: "Ejecución Elite",
-    desc: "Implementación de campañas de performance, branding y automatizaciones inteligentes."
+    title: "Ejecucion Elite",
+    desc: "Implementacion de campanas de performance, branding y automatizaciones inteligentes."
   },
   {
     num: "04",
-    title: "Optimización Real-Time",
-    desc: "Ajuste continuo basado en datos vivos para garantizar el máximo ROI posible."
+    title: "Optimizacion Real-Time",
+    desc: "Ajuste continuo basado en datos vivos para garantizar el maximo ROI posible."
   }
 ];
 
 export default function Process() {
   return (
-    <section className="py-32 px-6 sm:px-12 relative overflow-hidden bg-[#0a0a0a]">
+    <section className="relative overflow-hidden py-32 px-6 sm:px-12 bg-white">
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-brand-neon/10 blur-[140px] rounded-full -z-10" />
+      <div className="absolute bottom-0 right-0 w-[28rem] h-[28rem] bg-brand-purple/10 blur-[160px] rounded-full -z-10" />
+
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-24">
-          <h2 className="text-4xl md:text-6xl font-display font-bold mb-6">NUESTRO <span className="text-brand-neon">MÉTODO</span></h2>
-          <p className="text-white/40 max-w-xl mx-auto text-lg leading-relaxed">
-            Un proceso refinado basado en datos y tecnología de vanguardia para garantizar el éxito de cada cliente.
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center px-4 py-1 rounded-full bg-brand-neon/10 border border-brand-neon/20 text-brand-purple font-mono text-xs tracking-[0.25em] uppercase mb-5"
+          >
+            Metodologia
+          </motion.div>
+          <h2 className="text-4xl md:text-6xl font-display font-bold mb-6 text-slate-900">
+            Nuestro <span className="text-brand-neon italic">metodo</span>
+          </h2>
+          <p className="text-slate-600 max-w-2xl mx-auto text-lg leading-relaxed">
+            Un proceso refinado basado en datos y tecnologia de vanguardia para garantizar el exito de cada cliente.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-1px bg-white/5 border border-white/10 rounded-[3rem] overflow-hidden">
-           {steps.map((step, idx) => (
-             <div key={step.num} className="p-12 bg-black/40 hover:bg-brand-neon/5 transition-colors group">
-                <span className="text-6xl font-display font-black text-white/5 group-hover:text-brand-neon/20 transition-colors block mb-8">
-                  {step.num}
-                </span>
-                <h3 className="text-2xl font-bold mb-4 group-hover:text-brand-neon transition-colors">{step.title}</h3>
-                <p className="text-white/50 leading-relaxed font-light">
-                  {step.desc}
-                </p>
-             </div>
-           ))}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {steps.map((step, idx) => (
+            <motion.div
+              key={step.num}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: idx * 0.08 }}
+              className="group relative overflow-hidden rounded-[2rem] border border-slate-200 bg-white p-10 shadow-[0_18px_70px_rgba(15,23,42,0.06)] hover:shadow-[0_24px_90px_rgba(15,23,42,0.1)] transition-shadow"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-brand-neon/0 via-brand-neon/0 to-brand-neon/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <span className="relative z-10 block text-6xl font-display font-black text-slate-900/10 group-hover:text-brand-neon/20 transition-colors mb-8">
+                {step.num}
+              </span>
+              <h3 className="relative z-10 text-2xl font-bold mb-4 text-slate-900 group-hover:text-brand-neon transition-colors">
+                {step.title}
+              </h3>
+              <p className="relative z-10 text-slate-600 leading-relaxed font-light">
+                {step.desc}
+              </p>
+              <div className="relative z-10 mt-8 h-px w-full bg-slate-200 group-hover:bg-brand-neon/30 transition-colors" />
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
