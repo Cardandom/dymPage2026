@@ -1,6 +1,5 @@
 {
   "name": "DYM Digital",
   "description": "Soluciones digitales, software, automatización, marketing y diseño para negocios.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "requestFramePermissions": []
 }
