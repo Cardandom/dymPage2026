@@ -30,9 +30,8 @@ export default function Navbar() {
       )}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <BrandLogo className="w-28 h-10 sm:w-36 sm:h-12" compact />
-          <span className="text-2xl font-display font-bold tracking-tighter hidden sm:block">DYM DIGITAL</span>
+        <div className="flex items-center">
+          <BrandLogo className="h-[4.5rem] w-24 sm:h-20 sm:w-28" compact />
         </div>
 
         {/* Desktop Links */}

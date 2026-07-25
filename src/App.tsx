@@ -28,7 +28,7 @@ function Preloader() {
           transition={{ duration: 1 }}
           className="flex items-center gap-4"
         >
-          <BrandLogo className="w-28 h-16" compact />
+          <BrandLogo className="h-24 w-32 sm:h-28 sm:w-36" compact />
           <div className="h-10 w-0.5 bg-white/20" />
           <div className="text-2xl font-display font-bold tracking-widest overflow-hidden">
             <motion.span

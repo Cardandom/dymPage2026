@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { ArrowRight, Sparkles } from 'lucide-react';
-import { cn } from '@/src/lib/utils';
 
 export default function Hero() {
   const containerRef = React.useRef<HTMLDivElement>(null);
@@ -13,12 +12,12 @@ export default function Hero() {
   return (
     <section 
       ref={containerRef}
-      className="relative min-height-[100vh] flex flex-col items-center justify-center px-4 overflow-hidden"
+      className="relative min-h-svh flex flex-col items-center justify-center px-4 py-32 overflow-hidden"
       id="hero"
     >
       <motion.div 
         style={{ y: y1, opacity }}
-        className="relative z-10 text-center max-w-5xl"
+        className="relative z-10 text-center max-w-5xl mx-auto"
       >
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -34,7 +33,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="text-6xl md:text-8xl lg:text-9xl font-display font-bold tracking-tight text-white mb-8 leading-[0.9]"
+          className="text-5xl md:text-7xl lg:text-8xl font-display font-bold tracking-tight text-white mb-8 leading-[0.92]"
         >
           ESCALAMOS MARCAS <br />
           <span className="text-transparent bg-clip-text bg-linear-to-r from-brand-neon via-white to-brand-purple bg-size-[200%_auto] animate-gradient-x">
