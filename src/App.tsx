@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import ThreeCanvas from './components/ThreeCanvas';
 import Services from './components/Services';
 import AIAutomation from './components/AIAutomation';
 import Stats from './components/Stats';
@@ -13,6 +12,9 @@ import Testimonials from './components/Testimonials';
 import FAQ from './components/FAQ';
 import Marquee from './components/Marquee';
 import BrandLogo from './components/BrandLogo';
+
+const loadThreeCanvas = () => import('./components/ThreeCanvas');
+const ThreeCanvas = React.lazy(loadThreeCanvas);
 
 function Preloader() {
   return (
@@ -58,6 +60,8 @@ export default function App() {
   const [loading, setLoading] = React.useState(true);
 
   React.useEffect(() => {
+    void loadThreeCanvas();
+
     const timer = setTimeout(() => {
       setLoading(false);
     }, 2500);
@@ -76,7 +80,11 @@ export default function App() {
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
         >
-          <ThreeCanvas />
+          <React.Suspense
+            fallback={<div className="fixed inset-0 -z-10 bg-[#050505]" aria-hidden="true" />}
+          >
+            <ThreeCanvas />
+          </React.Suspense>
           <Navbar />
           
           <main>
