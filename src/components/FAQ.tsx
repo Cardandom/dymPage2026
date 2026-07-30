@@ -8,12 +8,8 @@ const faqs = [
     a: "La IA permite procesar billones de puntos de datos en milisegundos, optimizando presupuestos y personalizando mensajes a un nivel que ningun humano podria alcanzar."
   },
   {
-    q: "En cuanto tiempo vere resultados?",
-    a: "Dependiendo del sector, solemos ver mejoras significativas en las metricas clave (CTR, CPA) en las primeras 4-6 semanas de implementacion."
-  },
-  {
-    q: "Trabajan con empresas pequenas?",
-    a: "Nos enfocamos en empresas que ya tienen una validacion de mercado y buscan escalar de manera agresiva a nivel nacional o internacional."
+    q: "¿Tienes una empresa pequeña o un emprendimiento?",
+    a: "Somos ideales para ti, ya que manejamos planes para iniciar y hacemos escalable la parte digital de tu empresa o emprendimiento."
   },
   {
     q: "Es DYM Digital una agencia de marketing tradicional?",

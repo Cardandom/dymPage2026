@@ -27,13 +27,10 @@ export default function Footer() {
               viewport={{ once: true }}
               className="text-4xl md:text-5xl font-display font-bold mb-8 leading-[1.08] text-slate-900"
             >
-              Estas listo para dominar el <span className="text-brand-neon">ecosistema digital</span>?
+              ¿Estás listo para iniciar tu <span className="text-brand-neon">carrera digital</span>?
             </motion.h3>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <button className="px-8 py-4 bg-slate-900 text-white rounded-full font-bold hover:scale-[1.02] transition-all shadow-[0_16px_40px_rgba(15,23,42,0.15)]">
-                Comenzar Auditoria IA
-              </button>
               <button className="px-8 py-4 rounded-full border border-slate-200 text-slate-900 font-bold hover:border-brand-neon hover:text-brand-neon transition-colors bg-white">
                 Ver servicios
               </button>

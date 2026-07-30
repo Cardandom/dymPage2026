@@ -3,23 +3,23 @@ import { motion } from 'motion/react';
 const steps = [
   {
     num: "01",
-    title: "Auditoria Digital",
-    desc: "Analisis profundo de tu presencia digital actual y deteccion de fugas de ingresos."
+    title: "Conocemos tu negocio",
+    desc: "Analizamos tus necesidades, tus objetivos y la situación actual de tu negocio para identificar las mejores oportunidades."
   },
   {
     num: "02",
-    title: "Estrategia de Escalado",
-    desc: "Hoja de ruta personalizada utilizando IA para maximizar el crecimiento en tiempo record."
+    title: "Creamos un plan",
+    desc: "Definimos una estrategia clara y personalizada, con las herramientas y soluciones que realmente necesita tu proyecto."
   },
   {
     num: "03",
-    title: "Ejecucion Elite",
-    desc: "Implementacion de campanas de performance, branding y automatizaciones inteligentes."
+    title: "Lo ponemos en marcha",
+    desc: "Diseñamos y desarrollamos tu página web, aplicación, campaña o solución digital, cuidando cada detalle del proceso."
   },
   {
     num: "04",
-    title: "Optimizacion Real-Time",
-    desc: "Ajuste continuo basado en datos vivos para garantizar el maximo ROI posible."
+    title: "Medimos y mejoramos",
+    desc: "Revisamos los resultados y realizamos mejoras para que tu proyecto siga creciendo y funcionando cada vez mejor."
   }
 ];
 
@@ -43,7 +43,7 @@ export default function Process() {
             Nuestro <span className="text-brand-neon italic">metodo</span>
           </h2>
           <p className="text-slate-600 max-w-2xl mx-auto text-lg leading-relaxed">
-            Un proceso refinado basado en datos y tecnologia de vanguardia para garantizar el exito de cada cliente.
+            Conocemos tu negocio, creamos una solución a tu medida y te acompañamos durante todo el proceso para ayudarte a obtener mejores resultados.
           </p>
         </div>
 
