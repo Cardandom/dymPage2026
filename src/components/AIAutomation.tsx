@@ -56,8 +56,8 @@ export default function AIAutomation() {
             </div>
 
             <div className="text-center">
-              <div className="text-4xl font-display font-black text-brand-neon mb-2">98%</div>
-              <div className="text-xs uppercase tracking-widest text-slate-500">Precision Algoritmica</div>
+              <div className="text-4xl font-display font-black text-brand-neon mb-2">Más tiempo</div>
+              <div className="text-xs uppercase tracking-widest text-slate-500">Para hacer crecer tu negocio.</div>
             </div>
           </motion.div>
 
@@ -73,7 +73,7 @@ export default function AIAutomation() {
             viewport={{ once: true }}
             className="inline-block px-4 py-1 rounded-full bg-brand-neon/10 border border-brand-neon/25 text-brand-purple text-xs font-bold tracking-[0.2em] mb-6"
           >
-            INTELIGENCIA ARTIFICIAL
+            TECNOLOGÍA E INTELIGENCIA ARTIFICIAL
           </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -82,8 +82,8 @@ export default function AIAutomation() {
             transition={{ delay: 0.1 }}
             className="text-4xl md:text-6xl font-display font-bold mb-8 leading-tight text-slate-900"
           >
-            Automatizacion que <br />
-            <span className="text-brand-neon">Multiplica Resultados</span>
+            Automatización que <br />
+            <span className="text-brand-neon">Impulsa tu Negocio</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -92,15 +92,15 @@ export default function AIAutomation() {
             transition={{ delay: 0.2 }}
             className="text-slate-600 text-lg mb-10 leading-relaxed"
           >
-            No solo hacemos marketing, creamos cerebros digitales para tu negocio. Nuestra IA predice el comportamiento del consumidor, automatiza la captura de leads y personaliza cada interaccion para una conversion del 100%.
+            Ayudamos a empresas y emprendedores a ahorrar tiempo, organizar mejor sus procesos y conseguir más oportunidades de venta. Creamos páginas web y soluciones digitales que automatizan tareas, facilitan la atención de clientes y hacen que tu negocio trabaje de manera más eficiente.
           </motion.p>
 
           <ul className="space-y-6">
             {[
-              "Algoritmos de deteccion de nichos",
-              "Copywriting predictivo basado en neuromarketing",
-              "Optimizacion de presupuestos en tiempo milisegundo",
-              "Chatbots con personalidad de marca ultra-realista"
+              "Respuestas automáticas para tus clientes",
+              "Formularios y contactos organizados",
+              "Seguimiento de posibles clientes",
+              "Menos tareas manuales y más tiempo para tu negocio"
             ].map((item, idx) => (
               <motion.li
                 key={idx}
