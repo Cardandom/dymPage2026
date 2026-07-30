@@ -4,7 +4,7 @@ import { Bot, LineChart, Globe, Zap, Shield, Cpu } from 'lucide-react';
 const services = [
   {
     title: "Estrategia IA",
-    desc: "Implementamos modelos predictivos para anticipar tendencias y maximizar el ROI.",
+    desc: "Utilizamos estrategias a la vanguardia que se adaptan a cada cliente o empresa.",
     icon: Bot,
     color: "from-blue-500/20 to-cyan-500/20",
     borderColor: "border-blue-500/20"
@@ -18,7 +18,7 @@ const services = [
   },
   {
     title: "Branding Elite",
-    desc: "Diseño visual cinematográfico que eleva el valor percibido de tu marca.",
+    desc: "Diseñamos desde lo más sencillo hasta lo más élite, sin dejar de lado el pensamiento del cliente, haciendo de su branding la mejor elección.",
     icon: Globe,
     color: "from-brand-neon/20 to-brand-purple/20",
     borderColor: "border-brand-neon/20"
