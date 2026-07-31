@@ -1,4 +1,7 @@
-const logoSrc = new URL('../assets/logo1-web.png', import.meta.url).href;
+import logoAsset from '../assets/logo1-web.png';
+import { assetUrl } from '../lib/assetUrl';
+
+const logoSrc = assetUrl(logoAsset);
 
 type BrandLogoProps = {
   className?: string;

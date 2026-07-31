@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { Brain, Cpu, Network, Lightbulb } from 'lucide-react';

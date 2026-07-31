@@ -1,17 +1,55 @@
+import AIAutomation from "@/src/components/AIAutomation";
+import CTA from "@/src/components/CTA";
+import FAQ from "@/src/components/FAQ";
+import FeaturedProjects from "@/src/components/FeaturedProjects";
+import Footer from "@/src/components/Footer";
+import Hero from "@/src/components/Hero";
+import Marquee from "@/src/components/Marquee";
+import Navbar from "@/src/components/Navbar";
+import Process from "@/src/components/Process";
+import Services from "@/src/components/Services";
+import Stats from "@/src/components/Stats";
+import Testimonials from "@/src/components/Testimonials";
+import NextPreloader from "@/src/components/next/NextPreloader";
+import StaticCosmicBackground from "@/src/components/next/StaticCosmicBackground";
+
 export default function HomePage() {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <main className="flex min-h-screen items-center justify-center bg-slate-950 px-6 py-16 text-white">
-      <section className="w-full max-w-3xl rounded-3xl border border-white/10 bg-white/5 p-8 shadow-2xl shadow-brand-purple/20 sm:p-12">
-        <p className="mb-4 font-mono text-xs font-medium uppercase tracking-[0.28em] text-brand-blue">
-          Fase 1 · Diagnóstico
-        </p>
-        <h1 className="font-display text-4xl font-bold tracking-tight sm:text-6xl">
-          DYM Digital
-        </h1>
-        <p className="mt-5 max-w-xl text-lg text-white/70 sm:text-xl">
-          Infraestructura de Next.js preparada
-        </p>
-      </section>
-    </main>
+    <div className="next-site relative isolate min-h-screen overflow-x-hidden text-white selection:bg-brand-neon selection:text-white">
+      <StaticCosmicBackground />
+      <NextPreloader />
+
+      <noscript>
+        <style>{`
+          .next-preloader-failsafe { display: none !important; }
+          .next-site [style*="opacity: 0"],
+          .next-site [style*="opacity:0"] {
+            opacity: 1 !important;
+            transform: none !important;
+          }
+        `}</style>
+      </noscript>
+
+      <div className="relative z-10">
+        <Navbar />
+
+        <main>
+          <Hero />
+          <Stats />
+          <Services />
+          <Marquee />
+          <AIAutomation />
+          <FeaturedProjects />
+          <Process />
+          <Testimonials />
+          <FAQ />
+          <CTA />
+        </main>
+
+        <Footer year={currentYear} />
+      </div>
+    </div>
   );
 }

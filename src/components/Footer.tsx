@@ -1,9 +1,15 @@
+'use client';
+
 import { motion } from 'motion/react';
 import { Instagram, Linkedin, Twitter } from 'lucide-react';
 
 const socialLinks = [Instagram, Linkedin, Twitter];
 
-export default function Footer() {
+type FooterProps = {
+  year: number;
+};
+
+export default function Footer({ year }: FooterProps) {
   return (
     <footer className="relative overflow-hidden border-t border-slate-200 bg-white py-20 px-6 sm:px-12">
       <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-brand-neon/10 rounded-full blur-[160px] -z-10" />
@@ -84,7 +90,7 @@ export default function Footer() {
         </div>
 
         <div className="pt-10 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-6 text-slate-500 text-sm">
-          <p>(c) {new Date().getFullYear()} DYM Digital Agency. Todos los derechos reservados.</p>
+          <p>(c) {year} DYM Digital Agency. Todos los derechos reservados.</p>
           <div className="flex gap-8">
             <a href="#" className="hover:text-brand-neon transition-colors">Privacidad</a>
             <a href="#" className="hover:text-brand-neon transition-colors">Terminos</a>

@@ -1,10 +1,19 @@
-const kairosCover = new URL('../assets/projects/kairos-cover.webp', import.meta.url).href;
-const kairosIG = new URL('../assets/projects/kairosIG.webp', import.meta.url).href;
-const kairosLogo = new URL('../assets/projects/kairos-logo.webp', import.meta.url).href;
-const unaVidaConsciente = new URL('../assets/projects/unaVidaConciente.webp', import.meta.url).href;
-const vidaLogo = new URL('../assets/projects/vida-logo.webp', import.meta.url).href;
-const reinaSophia = new URL('../assets/projects/reinaSophia.webp', import.meta.url).href;
-const reinaSophiaLogo = new URL('../assets/projects/reina-sophia-logo.webp', import.meta.url).href;
+import kairosCoverAsset from '../assets/projects/kairos-cover.webp';
+import kairosIGAsset from '../assets/projects/kairosIG.webp';
+import kairosLogoAsset from '../assets/projects/kairos-logo.webp';
+import unaVidaConscienteAsset from '../assets/projects/unaVidaConciente.webp';
+import vidaLogoAsset from '../assets/projects/vida-logo.webp';
+import reinaSophiaAsset from '../assets/projects/reinaSophia.webp';
+import reinaSophiaLogoAsset from '../assets/projects/reina-sophia-logo.webp';
+import { assetUrl } from '../lib/assetUrl';
+
+const kairosCover = assetUrl(kairosCoverAsset);
+const kairosIG = assetUrl(kairosIGAsset);
+const kairosLogo = assetUrl(kairosLogoAsset);
+const unaVidaConsciente = assetUrl(unaVidaConscienteAsset);
+const vidaLogo = assetUrl(vidaLogoAsset);
+const reinaSophia = assetUrl(reinaSophiaAsset);
+const reinaSophiaLogo = assetUrl(reinaSophiaLogoAsset);
 
 export type Project = {
   id: string;
