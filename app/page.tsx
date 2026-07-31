@@ -11,6 +11,7 @@ import Services from "@/src/components/Services";
 import Stats from "@/src/components/Stats";
 import Testimonials from "@/src/components/Testimonials";
 import NextPreloader from "@/src/components/next/NextPreloader";
+import NextThreeCanvas from "@/src/components/next/NextThreeCanvas";
 import StaticCosmicBackground from "@/src/components/next/StaticCosmicBackground";
 
 export default function HomePage() {
@@ -19,6 +20,7 @@ export default function HomePage() {
   return (
     <div className="next-site relative isolate min-h-screen overflow-x-hidden text-white selection:bg-brand-neon selection:text-white">
       <StaticCosmicBackground />
+      <NextThreeCanvas />
       <NextPreloader />
 
       <noscript>

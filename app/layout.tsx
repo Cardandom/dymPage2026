@@ -6,6 +6,10 @@ export const metadata: Metadata = {
   title: "DYM Digital | Soluciones Digitales y Software",
   description:
     "DYM Digital crea soluciones digitales, software, sitios web, automatizaciones, embudos de venta, campañas publicitarias e identidad de marca para negocios que quieren crecer.",
+  icons: {
+    icon: "/favicon.png",
+    apple: "/apple-touch-icon.png",
+  },
 };
 
 type RootLayoutProps = Readonly<{

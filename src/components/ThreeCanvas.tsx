@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { OrbitControls, Sphere, MeshDistortMaterial, Float, Stars, Cloud } from '@react-three/drei';
@@ -38,6 +40,40 @@ type ParticleRingProps = {
   outerRadius?: number;
   particleSize?: number;
 };
+
+type ThreeCanvasProps = {
+  maxDpr?: number;
+  presentation?: 'standalone' | 'overlay';
+};
+
+type SceneAssetErrorBoundaryProps = {
+  children: React.ReactNode;
+};
+
+type SceneAssetErrorBoundaryState = {
+  hasError: boolean;
+};
+
+class SceneAssetErrorBoundary extends React.Component<
+  SceneAssetErrorBoundaryProps,
+  SceneAssetErrorBoundaryState
+> {
+  state: SceneAssetErrorBoundaryState = { hasError: false };
+
+  static getDerivedStateFromError(): SceneAssetErrorBoundaryState {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error: Error) {
+    if (process.env.NODE_ENV === 'development') {
+      console.warn('[DYM Digital] La textura de nubes no pudo cargarse.', error);
+    }
+  }
+
+  render() {
+    return this.state.hasError ? null : this.props.children;
+  }
+}
 
 function ParticleRing({
   color,
@@ -299,6 +335,8 @@ function MilkyWay({ position, color, scale = 1, rotation = [0, 0, 0] }: { positi
 }
 
 function Nebula({ position, color, scale = [1, 1, 1] }: { position: [number, number, number], color: string, scale?: [number, number, number] }) {
+    const cloudSeed = React.useMemo(() => Math.random(), []);
+
     return (
         <group position={position} scale={scale}>
             <Cloud
@@ -307,6 +345,7 @@ function Nebula({ position, color, scale = [1, 1, 1] }: { position: [number, num
                 segments={20}
                 color={color}
                 fade={10}
+                seed={cloudSeed}
             />
         </group>
     );
@@ -942,11 +981,11 @@ function BlackHole() {
 function Comets() {
   const cometRefs = React.useRef<THREE.Group[]>([]);
   
-  useFrame((state) => {
+  useFrame((_, delta) => {
     cometRefs.current.forEach((ref, i) => {
       if (ref) {
-        ref.position.x += 0.1;
-        ref.position.y -= 0.05;
+        ref.position.x += delta * 6;
+        ref.position.y -= delta * 3;
         if (ref.position.x > 10) {
           ref.position.x = -15 - Math.random() * 10;
           ref.position.y = 5 + Math.random() * 5;
@@ -1012,8 +1051,12 @@ function AnimatedBackground() {
       <Comets />
       
       <MilkyWay position={[3, 1, -8]} color="#ffffff" scale={4} rotation={[Math.PI / 4, 0, 0]} />
-      <Nebula position={[-5, -2, -12]} color="#7000ff" scale={[2, 1, 1]} />
-      <Nebula position={[6, -4, -15]} color="#00f2ff" scale={[3, 1.5, 1]} />
+      <SceneAssetErrorBoundary>
+        <React.Suspense fallback={null}>
+          <Nebula position={[-5, -2, -12]} color="#7000ff" scale={[2, 1, 1]} />
+          <Nebula position={[6, -4, -15]} color="#00f2ff" scale={[3, 1.5, 1]} />
+        </React.Suspense>
+      </SceneAssetErrorBoundary>
       
       <SpiralGalaxy position={[5, 4, -10]} color="#7000ff" scale={2} />
       <SpiralGalaxy position={[-8, -6, -15]} color="#00f2ff" scale={3} />
@@ -1023,10 +1066,28 @@ function AnimatedBackground() {
   );
 }
 
-export default function ThreeCanvas() {
+export default function ThreeCanvas({
+  maxDpr = 2,
+  presentation = 'standalone',
+}: ThreeCanvasProps) {
+  const isOverlay = presentation === 'overlay';
+
   return (
-    <div className="fixed inset-0 -z-10 bg-[#050505]">
-      <Canvas camera={{ position: [0, 0, 5], fov: 75 }}>
+    <div
+      aria-hidden={isOverlay ? undefined : 'true'}
+      className={isOverlay ? 'relative h-full w-full overflow-hidden' : 'fixed inset-0 -z-10 overflow-hidden bg-[#050505]'}
+    >
+      <Canvas
+        className="block h-full w-full"
+        style={{ display: 'block', width: '100%', height: '100%' }}
+        camera={{ position: [0, 0, 5], fov: 75 }}
+        dpr={[1, maxDpr]}
+        frameloop="always"
+        gl={{ alpha: true, antialias: true, powerPreference: 'high-performance' }}
+        onCreated={({ gl }) => {
+          gl.setClearColor('#000000', 0);
+        }}
+      >
         <ambientLight intensity={0.5} />
         <pointLight position={[10, 10, 10]} intensity={1} color="#00f2ff" />
         <pointLight position={[-10, -10, -10]} intensity={1} color="#7000ff" />
