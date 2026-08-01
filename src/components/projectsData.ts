@@ -25,14 +25,14 @@ export type Project = {
   imagePosition?: string;
   logo?: string;
   logoAlt?: string;
-  tags?: string[];
+  tags?: readonly string[];
   slug: string;
   ariaLabel: string;
   results: string;
 };
 
 // Los slugs quedan preparados para enlazar los futuros casos de estudio.
-export const featuredProjects: Project[] = [
+export const featuredProjects = [
   {
     id: 'kairos-website',
     title: 'KAIROS DESIGN & CONSTRUCTION',
@@ -90,4 +90,6 @@ export const featuredProjects: Project[] = [
     ariaLabel: 'Ver caso de estudio de Reina Sophia Residences',
     results: 'Proyecto real',
   },
-];
+] as const satisfies readonly Project[];
+
+export type FeaturedProjectId = (typeof featuredProjects)[number]['id'];

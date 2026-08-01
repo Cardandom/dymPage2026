@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { AnimatePresence, motion } from 'motion/react';
-import BrandLogo from '../BrandLogo';
+import NextBrandLogo from './NextBrandLogo';
 
 export default function NextPreloader() {
   const [visible, setVisible] = React.useState(true);
@@ -67,7 +67,12 @@ export default function NextPreloader() {
                 transition={{ duration: reduceMotion ? 0 : 1 }}
                 className="flex items-center gap-4"
               >
-                <BrandLogo className="h-24 w-32 sm:h-28 sm:w-36" compact />
+                <NextBrandLogo
+                  className="h-24 w-32 sm:h-28 sm:w-36"
+                  compact
+                  loading="eager"
+                  sizes="(max-width: 639px) 128px, 144px"
+                />
                 <div className="h-10 w-0.5 bg-white/20" />
                 <div className="overflow-hidden text-2xl font-display font-bold tracking-widest">
                   <motion.span

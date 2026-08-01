@@ -2,14 +2,16 @@
 
 import { motion } from 'motion/react';
 import { Instagram, Linkedin, Twitter } from 'lucide-react';
+import type { ReactNode } from 'react';
 
 const socialLinks = [Instagram, Linkedin, Twitter];
 
 type FooterProps = {
   year: number;
+  brandLogo?: ReactNode;
 };
 
-export default function Footer({ year }: FooterProps) {
+export default function Footer({ year, brandLogo }: FooterProps) {
   return (
     <footer className="relative overflow-hidden border-t border-slate-200 bg-white py-20 px-6 sm:px-12">
       <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-brand-neon/10 rounded-full blur-[160px] -z-10" />
@@ -19,9 +21,11 @@ export default function Footer({ year }: FooterProps) {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-14 mb-20">
           <div className="col-span-1 lg:col-span-2 max-w-2xl">
             <div className="flex items-center gap-3 mb-8">
-              <div className="w-11 h-11 rounded-xl bg-brand-neon text-black flex items-center justify-center font-bold text-xl shadow-sm">
-                D
-              </div>
+              {brandLogo ?? (
+                <div className="w-11 h-11 rounded-xl bg-brand-neon text-black flex items-center justify-center font-bold text-xl shadow-sm">
+                  D
+                </div>
+              )}
               <span className="text-2xl font-display font-bold tracking-tighter text-slate-900">
                 DYM DIGITAL
               </span>

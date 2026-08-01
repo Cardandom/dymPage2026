@@ -6,6 +6,10 @@ import { Menu, X, ArrowUpRight } from 'lucide-react';
 import { cn } from '@/src/lib/utils';
 import BrandLogo from './BrandLogo';
 
+type NavbarProps = {
+  brandLogo?: React.ReactNode;
+};
+
 const navLinks = [
   { name: 'Inicio', href: '#hero' },
   { name: 'Servicios', href: '#services' },
@@ -14,7 +18,7 @@ const navLinks = [
   { name: 'Contacto', href: '#contact' },
 ];
 
-export default function Navbar() {
+export default function Navbar({ brandLogo }: NavbarProps) {
   const [isScrolled, setIsScrolled] = React.useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
 
@@ -48,7 +52,7 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <div className="flex items-center">
-          <BrandLogo className="h-[4.5rem] w-24 sm:h-20 sm:w-28" compact />
+          {brandLogo ?? <BrandLogo className="h-[4.5rem] w-24 sm:h-20 sm:w-28" compact />}
         </div>
 
         {/* Desktop Links */}
