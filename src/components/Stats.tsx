@@ -13,7 +13,7 @@ export default function Stats() {
   return (
     <section className="py-20 border-y border-white/5 relative bg-white">
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
-        {stats.map((stat, idx) => (
+        {stats.map((stat) => (
           <motion.div
             key={stat.label}
             initial={{ opacity: 0, scale: 0.9 }}

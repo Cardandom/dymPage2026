@@ -1,30 +1,21 @@
 'use client';
 
 import React from 'react';
-import { AnimatePresence, motion } from 'motion/react';
+import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import NextBrandLogo from './NextBrandLogo';
 
 export default function NextPreloader() {
   const [visible, setVisible] = React.useState(true);
-  const [reduceMotion, setReduceMotion] = React.useState(false);
+  const shouldReduceMotion = useReducedMotion();
+  const reduceMotion = shouldReduceMotion ?? false;
 
   React.useEffect(() => {
-    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const shouldReduceMotion = mediaQuery.matches;
-
-    setReduceMotion(shouldReduceMotion);
-
-    if (shouldReduceMotion) {
-      setVisible(false);
-      return;
-    }
-
     const timer = window.setTimeout(() => {
       setVisible(false);
-    }, 2500);
+    }, reduceMotion ? 0 : 2500);
 
     return () => window.clearTimeout(timer);
-  }, []);
+  }, [reduceMotion]);
 
   return (
     <>

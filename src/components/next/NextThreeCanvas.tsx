@@ -53,26 +53,33 @@ export default function NextThreeCanvas() {
     if (detectionStarted.current) return;
     detectionStarted.current = true;
 
-    const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const connection = (navigator as NavigatorWithConnection).connection;
+    const detectionFrame = window.requestAnimationFrame(() => {
+      const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+      const connection = (navigator as NavigatorWithConnection).connection;
 
-    if (reducedMotionQuery.matches || connection?.saveData === true) {
-      setSceneState({ status: 'unsupported' });
-      return;
-    }
-
-    if (!supportsWebGL()) {
-      setSceneState({ status: 'unsupported' });
-
-      if (process.env.NODE_ENV === 'development') {
-        console.warn('[DYM Digital] WebGL no está disponible; se utilizará el fondo estático.');
+      if (reducedMotionQuery.matches || connection?.saveData === true) {
+        setSceneState({ status: 'unsupported' });
+        return;
       }
 
-      return;
-    }
+      if (!supportsWebGL()) {
+        setSceneState({ status: 'unsupported' });
 
-    const isMobile = window.matchMedia('(max-width: 767px)').matches;
-    setSceneState({ status: 'supported', maxDpr: isMobile ? 1.25 : 2 });
+        if (process.env.NODE_ENV === 'development') {
+          console.warn('[DYM Digital] WebGL no está disponible; se utilizará el fondo estático.');
+        }
+
+        return;
+      }
+
+      const isMobile = window.matchMedia('(max-width: 767px)').matches;
+      setSceneState({ status: 'supported', maxDpr: isMobile ? 1.25 : 2 });
+    });
+
+    return () => {
+      window.cancelAnimationFrame(detectionFrame);
+      detectionStarted.current = false;
+    };
   }, []);
 
   if (sceneState.status !== 'supported') {

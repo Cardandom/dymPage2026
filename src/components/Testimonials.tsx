@@ -43,7 +43,7 @@ export default function Testimonials() {
               transition={{ delay: i * 0.1 }}
               className="p-10 glass rounded-[2.5rem] border-white/5 hover:border-brand-neon/30 transition-all flex flex-col justify-between"
             >
-              <p className="text-xl text-white/80 italic leading-relaxed mb-10">"{t.text}"</p>
+              <p className="text-xl text-white/80 italic leading-relaxed mb-10">&quot;{t.text}&quot;</p>
               
               <div className="flex items-center gap-4">
                 <img
