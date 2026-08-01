@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { motion } from 'motion/react';
 import { Quote } from 'lucide-react';
 
@@ -46,9 +47,11 @@ export default function Testimonials() {
               <p className="text-xl text-white/80 italic leading-relaxed mb-10">&quot;{t.text}&quot;</p>
               
               <div className="flex items-center gap-4">
-                <img
+                <Image
                   src={t.avatar}
                   alt={t.name}
+                  width={48}
+                  height={48}
                   className="w-12 h-12 rounded-full grayscale border border-white/10"
                   loading="lazy"
                   decoding="async"
