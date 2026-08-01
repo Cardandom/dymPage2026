@@ -8,9 +8,6 @@
     "build": "next build",
     "start": "next start",
     "preview": "next start",
-    "dev:next": "next dev",
-    "build:next": "next build",
-    "start:next": "next start",
     "clean": "rm -rf dist server.js",
     "typecheck": "tsc --noEmit",
     "lint": "tsc --noEmit"
