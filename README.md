@@ -55,8 +55,10 @@ Copia `.env.example` como `.env.local` cuando necesites sobrescribir el dominio 
 cp .env.example .env.local
 ```
 
-## Estado de la migración
+## Estado del proyecto
 
-Next.js es actualmente el framework principal del proyecto.
+La migración desde Vite a Next.js está completada.
 
-Los archivos de Vite permanecen temporalmente como respaldo técnico durante la retirada gradual de la infraestructura anterior, pero no forman parte del flujo principal de desarrollo o producción.
+Next.js es el único framework utilizado para el desarrollo, la compilación y la ejecución en producción del sitio.
+
+El historial de Git y el tag `next-primary-ready` conservan un punto de restauración anterior a la retirada definitiva de Vite.
