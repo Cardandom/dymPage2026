@@ -417,7 +417,6 @@ function AndromedaGalaxy() {
     const deepBlue = new THREE.Color('#071b5b');
     const electricBlue = new THREE.Color('#28b8ff');
     const paleBlue = new THREE.Color('#b7d9ff');
-    const violet = new THREE.Color('#6e35d5');
     const paleViolet = new THREE.Color('#d8c7ff');
     const magenta = new THREE.Color('#ff278f');
     const rose = new THREE.Color('#ff7fc1');
@@ -982,7 +981,7 @@ function Comets() {
   const cometRefs = React.useRef<THREE.Group[]>([]);
   
   useFrame((_, delta) => {
-    cometRefs.current.forEach((ref, i) => {
+    cometRefs.current.forEach((ref) => {
       if (ref) {
         ref.position.x += delta * 6;
         ref.position.y -= delta * 3;
