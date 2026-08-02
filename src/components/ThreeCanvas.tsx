@@ -1040,10 +1040,11 @@ function Comets() {
 function AnimatedBackground() {
   const points = React.useMemo(() => {
     const p = new Float32Array(2000 * 3);
+    let randomIndex = 0;
     for (let i = 0; i < 2000; i++) {
-      p[i * 3] = (Math.random() - 0.5) * 15;
-      p[i * 3 + 1] = (Math.random() - 0.5) * 15;
-      p[i * 3 + 2] = (Math.random() - 0.5) * 15;
+      p[i * 3] = (seededRandomAt(44001, randomIndex++) - 0.5) * 15;
+      p[i * 3 + 1] = (seededRandomAt(44001, randomIndex++) - 0.5) * 15;
+      p[i * 3 + 2] = (seededRandomAt(44001, randomIndex++) - 0.5) * 15;
     }
     return p;
   }, []);
