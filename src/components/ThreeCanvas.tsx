@@ -302,23 +302,24 @@ function FloatingPlanets() {
   );
 }
 
-function MilkyWay({ position, color, scale = 1, rotation = [0, 0, 0] }: { position: [number, number, number], color: string, scale?: number, rotation?: [number, number, number] }) {
+function MilkyWay({ position, color, seed, scale = 1, rotation = [0, 0, 0] }: { position: [number, number, number], color: string, seed: number, scale?: number, rotation?: [number, number, number] }) {
   const points = React.useMemo(() => {
     const p = new Float32Array(3000 * 3);
+    let randomIndex = 0;
     for (let i = 0; i < 3000; i++) {
         // Core density
-        const isCore = Math.random() > 0.8;
+        const isCore = seededRandomAt(seed, randomIndex++) > 0.8;
         const angle = i * 0.05;
-        const radius = isCore ? Math.random() * 0.1 : i * 0.0015;
-        const x = Math.cos(angle) * radius + (Math.random() - 0.5) * 0.3;
-        const y = (Math.random() - 0.5) * (isCore ? 0.2 : 0.05);
-        const z = Math.sin(angle) * radius + (Math.random() - 0.5) * 0.3;
+        const radius = isCore ? seededRandomAt(seed, randomIndex++) * 0.1 : i * 0.0015;
+        const x = Math.cos(angle) * radius + (seededRandomAt(seed, randomIndex++) - 0.5) * 0.3;
+        const y = (seededRandomAt(seed, randomIndex++) - 0.5) * (isCore ? 0.2 : 0.05);
+        const z = Math.sin(angle) * radius + (seededRandomAt(seed, randomIndex++) - 0.5) * 0.3;
         p[i * 3] = x;
         p[i * 3 + 1] = y;
         p[i * 3 + 2] = z;
     }
     return p;
-  }, []);
+  }, [seed]);
 
   const ref = React.useRef<THREE.Points>(null);
   useFrame((state) => {
@@ -341,8 +342,8 @@ function MilkyWay({ position, color, scale = 1, rotation = [0, 0, 0] }: { positi
   );
 }
 
-function Nebula({ position, color, scale = [1, 1, 1] }: { position: [number, number, number], color: string, scale?: [number, number, number] }) {
-    const cloudSeed = React.useMemo(() => Math.random(), []);
+function Nebula({ position, color, seed, scale = [1, 1, 1] }: { position: [number, number, number], color: string, seed: number, scale?: [number, number, number] }) {
+    const cloudSeed = seededRandomAt(seed, 0);
 
     return (
         <group position={position} scale={scale}>
@@ -358,21 +359,22 @@ function Nebula({ position, color, scale = [1, 1, 1] }: { position: [number, num
     );
 }
 
-function SpiralGalaxy({ position, color, scale = 1 }: { position: [number, number, number], color: string, scale?: number }) {
+function SpiralGalaxy({ position, color, seed, scale = 1 }: { position: [number, number, number], color: string, seed: number, scale?: number }) {
   const points = React.useMemo(() => {
     const p = new Float32Array(1000 * 3);
+    let randomIndex = 0;
     for (let i = 0; i < 1000; i++) {
       const angle = i * 0.1;
       const radius = i * 0.005;
-      const x = Math.cos(angle) * radius + (Math.random() - 0.5) * 0.2;
-      const y = (Math.random() - 0.5) * 0.1;
-      const z = Math.sin(angle) * radius + (Math.random() - 0.5) * 0.2;
+      const x = Math.cos(angle) * radius + (seededRandomAt(seed, randomIndex++) - 0.5) * 0.2;
+      const y = (seededRandomAt(seed, randomIndex++) - 0.5) * 0.1;
+      const z = Math.sin(angle) * radius + (seededRandomAt(seed, randomIndex++) - 0.5) * 0.2;
       p[i * 3] = x;
       p[i * 3 + 1] = y;
       p[i * 3 + 2] = z;
     }
     return p;
-  }, []);
+  }, [seed]);
 
   const ref = React.useRef<THREE.Points>(null);
   useFrame((state) => {
@@ -1069,16 +1071,16 @@ function AnimatedBackground() {
       
       <Comets />
       
-      <MilkyWay position={[3, 1, -8]} color="#ffffff" scale={4} rotation={[Math.PI / 4, 0, 0]} />
+      <MilkyWay position={[3, 1, -8]} color="#ffffff" seed={11001} scale={4} rotation={[Math.PI / 4, 0, 0]} />
       <SceneAssetErrorBoundary>
         <React.Suspense fallback={null}>
-          <Nebula position={[-5, -2, -12]} color="#7000ff" scale={[2, 1, 1]} />
-          <Nebula position={[6, -4, -15]} color="#00f2ff" scale={[3, 1.5, 1]} />
+          <Nebula position={[-5, -2, -12]} color="#7000ff" seed={22001} scale={[2, 1, 1]} />
+          <Nebula position={[6, -4, -15]} color="#00f2ff" seed={22002} scale={[3, 1.5, 1]} />
         </React.Suspense>
       </SceneAssetErrorBoundary>
       
-      <SpiralGalaxy position={[5, 4, -10]} color="#7000ff" scale={2} />
-      <SpiralGalaxy position={[-8, -6, -15]} color="#00f2ff" scale={3} />
+      <SpiralGalaxy position={[5, 4, -10]} color="#7000ff" seed={33001} scale={2} />
+      <SpiralGalaxy position={[-8, -6, -15]} color="#00f2ff" seed={33002} scale={3} />
       <BlackHole />
       <AndromedaGalaxy />
     </group>
