@@ -1,11 +1,17 @@
-import { motion } from 'motion/react';
-import type { Project } from './projectsData';
+'use client';
 
-type ProjectCardProps = Project & {
+import Image from 'next/image';
+import { motion } from 'motion/react';
+import type { NextProject } from './nextProjectsData';
+
+type NextProjectCardProps = NextProject & {
   index: number;
 };
 
-export default function ProjectCard({
+const coverSizes = '(max-width: 767px) calc(100vw - 3rem), (max-width: 1375px) calc(50vw - 4.5rem), 616px';
+const logoSizes = '(max-width: 767px) 70vw, (max-width: 1375px) 29vw, 357px';
+
+export default function NextProjectCard({
   id,
   title,
   category,
@@ -20,7 +26,7 @@ export default function ProjectCard({
   ariaLabel,
   results,
   index,
-}: ProjectCardProps) {
+}: NextProjectCardProps) {
   return (
     <motion.article
       initial={{ opacity: 0, y: 40 }}
@@ -32,26 +38,27 @@ export default function ProjectCard({
       data-project-slug={slug}
     >
       <div className="relative aspect-4/3 overflow-hidden rounded-[2.5rem] mb-8 border border-slate-200 bg-white shadow-[0_18px_70px_rgba(15,23,42,0.08)]">
-        <img
+        <Image
           src={image}
           alt={imageAlt}
+          fill
+          sizes={coverSizes}
           className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 grayscale group-hover:grayscale-0"
           style={imagePosition ? { objectPosition: imagePosition } : undefined}
           referrerPolicy="no-referrer"
           loading="lazy"
-          decoding="async"
         />
         <div className="absolute inset-0 bg-linear-to-t from-white via-white/10 to-transparent opacity-80 group-hover:opacity-50 transition-opacity" />
 
         {logo && (
           <div className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center bg-black/40 opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100">
             <div className="w-[70%] overflow-hidden rounded-xl bg-white shadow-[0_18px_60px_rgba(0,0,0,0.28)] [clip-path:inset(0_100%_0_0)] transition-[clip-path] duration-700 ease-out group-hover:[clip-path:inset(0_0_0_0)] md:w-[58%]">
-              <img
+              <Image
                 src={logo}
-                alt={logoAlt ?? `Logo ${title}`}
+                alt={logoAlt ?? `Logo de ${title}`}
+                sizes={logoSizes}
                 className="block h-auto w-full object-contain"
                 loading="lazy"
-                decoding="async"
               />
             </div>
           </div>

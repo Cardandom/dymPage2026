@@ -1,3 +1,5 @@
+'use client';
+
 import { motion } from 'motion/react';
 import { Bot, LineChart, Globe, Zap, Shield, Cpu } from 'lucide-react';
 

@@ -1,9 +1,11 @@
-import { motion } from 'motion/react';
-import { ExternalLink } from 'lucide-react';
-import ProjectCard from './ProjectCard';
-import { featuredProjects } from './projectsData';
+'use client';
 
-export default function FeaturedProjects() {
+import { ExternalLink } from 'lucide-react';
+import { motion } from 'motion/react';
+import NextProjectCard from './NextProjectCard';
+import { nextFeaturedProjects } from './nextProjectsData';
+
+export default function NextFeaturedProjects() {
   return (
     <section
       id="cases"
@@ -35,8 +37,8 @@ export default function FeaturedProjects() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          {featuredProjects.map((project, index) => (
-            <ProjectCard
+          {nextFeaturedProjects.map((project, index) => (
+            <NextProjectCard
               key={project.id}
               {...project}
               index={index}

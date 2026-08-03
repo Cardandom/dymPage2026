@@ -1,3 +1,6 @@
+'use client';
+
+import Image from 'next/image';
 import { motion } from 'motion/react';
 import { Quote } from 'lucide-react';
 
@@ -41,10 +44,19 @@ export default function Testimonials() {
               transition={{ delay: i * 0.1 }}
               className="p-10 glass rounded-[2.5rem] border-white/5 hover:border-brand-neon/30 transition-all flex flex-col justify-between"
             >
-              <p className="text-xl text-white/80 italic leading-relaxed mb-10">"{t.text}"</p>
+              <p className="text-xl text-white/80 italic leading-relaxed mb-10">&quot;{t.text}&quot;</p>
               
               <div className="flex items-center gap-4">
-                <img src={t.avatar} alt={t.name} className="w-12 h-12 rounded-full grayscale border border-white/10" referrerPolicy="no-referrer" />
+                <Image
+                  src={t.avatar}
+                  alt={t.name}
+                  width={48}
+                  height={48}
+                  className="w-12 h-12 rounded-full grayscale border border-white/10"
+                  loading="lazy"
+                  decoding="async"
+                  referrerPolicy="no-referrer"
+                />
                 <div>
                   <h4 className="font-bold text-white">{t.name}</h4>
                   <p className="text-white/40 text-xs uppercase tracking-widest">{t.role}</p>

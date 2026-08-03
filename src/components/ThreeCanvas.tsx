@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { OrbitControls, Sphere, MeshDistortMaterial, Float, Stars, Cloud } from '@react-three/drei';
@@ -38,6 +40,47 @@ type ParticleRingProps = {
   outerRadius?: number;
   particleSize?: number;
 };
+
+type ThreeCanvasProps = {
+  maxDpr?: number;
+  presentation?: 'standalone' | 'overlay';
+};
+
+function seededRandomAt(seed: number, index: number): number {
+  let value = seed + 0x6d2b79f5 * (index + 1);
+  value = Math.imul(value ^ (value >>> 15), value | 1);
+  value ^= value + Math.imul(value ^ (value >>> 7), value | 61);
+  return ((value ^ (value >>> 14)) >>> 0) / 4294967296;
+}
+
+type SceneAssetErrorBoundaryProps = {
+  children: React.ReactNode;
+};
+
+type SceneAssetErrorBoundaryState = {
+  hasError: boolean;
+};
+
+class SceneAssetErrorBoundary extends React.Component<
+  SceneAssetErrorBoundaryProps,
+  SceneAssetErrorBoundaryState
+> {
+  state: SceneAssetErrorBoundaryState = { hasError: false };
+
+  static getDerivedStateFromError(): SceneAssetErrorBoundaryState {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error: Error) {
+    if (process.env.NODE_ENV === 'development') {
+      console.warn('[DYM Digital] La textura de nubes no pudo cargarse.', error);
+    }
+  }
+
+  render() {
+    return this.state.hasError ? null : this.props.children;
+  }
+}
 
 function ParticleRing({
   color,
@@ -259,23 +302,24 @@ function FloatingPlanets() {
   );
 }
 
-function MilkyWay({ position, color, scale = 1, rotation = [0, 0, 0] }: { position: [number, number, number], color: string, scale?: number, rotation?: [number, number, number] }) {
+function MilkyWay({ position, color, seed, scale = 1, rotation = [0, 0, 0] }: { position: [number, number, number], color: string, seed: number, scale?: number, rotation?: [number, number, number] }) {
   const points = React.useMemo(() => {
     const p = new Float32Array(3000 * 3);
+    let randomIndex = 0;
     for (let i = 0; i < 3000; i++) {
         // Core density
-        const isCore = Math.random() > 0.8;
+        const isCore = seededRandomAt(seed, randomIndex++) > 0.8;
         const angle = i * 0.05;
-        const radius = isCore ? Math.random() * 0.1 : i * 0.0015;
-        const x = Math.cos(angle) * radius + (Math.random() - 0.5) * 0.3;
-        const y = (Math.random() - 0.5) * (isCore ? 0.2 : 0.05);
-        const z = Math.sin(angle) * radius + (Math.random() - 0.5) * 0.3;
+        const radius = isCore ? seededRandomAt(seed, randomIndex++) * 0.1 : i * 0.0015;
+        const x = Math.cos(angle) * radius + (seededRandomAt(seed, randomIndex++) - 0.5) * 0.3;
+        const y = (seededRandomAt(seed, randomIndex++) - 0.5) * (isCore ? 0.2 : 0.05);
+        const z = Math.sin(angle) * radius + (seededRandomAt(seed, randomIndex++) - 0.5) * 0.3;
         p[i * 3] = x;
         p[i * 3 + 1] = y;
         p[i * 3 + 2] = z;
     }
     return p;
-  }, []);
+  }, [seed]);
 
   const ref = React.useRef<THREE.Points>(null);
   useFrame((state) => {
@@ -298,7 +342,9 @@ function MilkyWay({ position, color, scale = 1, rotation = [0, 0, 0] }: { positi
   );
 }
 
-function Nebula({ position, color, scale = [1, 1, 1] }: { position: [number, number, number], color: string, scale?: [number, number, number] }) {
+function Nebula({ position, color, seed, scale = [1, 1, 1] }: { position: [number, number, number], color: string, seed: number, scale?: [number, number, number] }) {
+    const cloudSeed = seededRandomAt(seed, 0);
+
     return (
         <group position={position} scale={scale}>
             <Cloud
@@ -307,26 +353,28 @@ function Nebula({ position, color, scale = [1, 1, 1] }: { position: [number, num
                 segments={20}
                 color={color}
                 fade={10}
+                seed={cloudSeed}
             />
         </group>
     );
 }
 
-function SpiralGalaxy({ position, color, scale = 1 }: { position: [number, number, number], color: string, scale?: number }) {
+function SpiralGalaxy({ position, color, seed, scale = 1 }: { position: [number, number, number], color: string, seed: number, scale?: number }) {
   const points = React.useMemo(() => {
     const p = new Float32Array(1000 * 3);
+    let randomIndex = 0;
     for (let i = 0; i < 1000; i++) {
       const angle = i * 0.1;
       const radius = i * 0.005;
-      const x = Math.cos(angle) * radius + (Math.random() - 0.5) * 0.2;
-      const y = (Math.random() - 0.5) * 0.1;
-      const z = Math.sin(angle) * radius + (Math.random() - 0.5) * 0.2;
+      const x = Math.cos(angle) * radius + (seededRandomAt(seed, randomIndex++) - 0.5) * 0.2;
+      const y = (seededRandomAt(seed, randomIndex++) - 0.5) * 0.1;
+      const z = Math.sin(angle) * radius + (seededRandomAt(seed, randomIndex++) - 0.5) * 0.2;
       p[i * 3] = x;
       p[i * 3 + 1] = y;
       p[i * 3 + 2] = z;
     }
     return p;
-  }, []);
+  }, [seed]);
 
   const ref = React.useRef<THREE.Points>(null);
   useFrame((state) => {
@@ -378,7 +426,6 @@ function AndromedaGalaxy() {
     const deepBlue = new THREE.Color('#071b5b');
     const electricBlue = new THREE.Color('#28b8ff');
     const paleBlue = new THREE.Color('#b7d9ff');
-    const violet = new THREE.Color('#6e35d5');
     const paleViolet = new THREE.Color('#d8c7ff');
     const magenta = new THREE.Color('#ff278f');
     const rose = new THREE.Color('#ff7fc1');
@@ -387,27 +434,20 @@ function AndromedaGalaxy() {
     const darkDust = new THREE.Color('#080612');
     const violetDust = new THREE.Color('#2a123f');
     const particleColor = new THREE.Color();
-    let seed = 2026;
-
-    const random = () => {
-      seed += 0x6d2b79f5;
-      let value = seed;
-      value = Math.imul(value ^ (value >>> 15), value | 1);
-      value ^= value + Math.imul(value ^ (value >>> 7), value | 61);
-      return ((value ^ (value >>> 14)) >>> 0) / 4294967296;
-    };
+    let randomIndex = 0;
 
     for (let i = 0; i < haloCount; i++) {
-      const radius = Math.pow(random(), 0.72) * 2.95;
-      const angle = random() * Math.PI * 2;
+      const radius = Math.pow(seededRandomAt(2026, randomIndex++), 0.72) * 2.95;
+      const angle = seededRandomAt(2026, randomIndex++) * Math.PI * 2;
       const centerBias = 1 - radius / 2.95;
-      const isBlueRegion = random() > 0.64;
+      const isBlueRegion = seededRandomAt(2026, randomIndex++) > 0.64;
 
       haloPositions[i * 3] =
-        Math.cos(angle) * radius * 1.72 + (random() - 0.5) * 0.22;
+        Math.cos(angle) * radius * 1.72 + (seededRandomAt(2026, randomIndex++) - 0.5) * 0.22;
       haloPositions[i * 3 + 1] =
-        Math.sin(angle) * radius * 0.5 + (random() - 0.5) * 0.28;
-      haloPositions[i * 3 + 2] = (random() - 0.5) * (0.18 + radius * 0.045);
+        Math.sin(angle) * radius * 0.5 + (seededRandomAt(2026, randomIndex++) - 0.5) * 0.28;
+      haloPositions[i * 3 + 2] =
+        (seededRandomAt(2026, randomIndex++) - 0.5) * (0.18 + radius * 0.045);
 
       particleColor
         .copy(isBlueRegion ? deepBlue : magenta)
@@ -419,18 +459,19 @@ function AndromedaGalaxy() {
     }
 
     for (let i = 0; i < diskCount; i++) {
-      const radius = Math.pow(random(), 1.42) * 2.48;
-      const angle = random() * Math.PI * 2;
+      const radius = Math.pow(seededRandomAt(2026, randomIndex++), 1.42) * 2.48;
+      const angle = seededRandomAt(2026, randomIndex++) * Math.PI * 2;
       const centerBias = 1 - radius / 2.48;
 
       diskPositions[i * 3] =
-        Math.cos(angle) * radius * 1.66 + (random() - 0.5) * 0.1;
+        Math.cos(angle) * radius * 1.66 + (seededRandomAt(2026, randomIndex++) - 0.5) * 0.1;
       diskPositions[i * 3 + 1] =
-        Math.sin(angle) * radius * 0.46 + (random() - 0.5) * 0.16;
-      diskPositions[i * 3 + 2] = (random() - 0.5) * (0.12 + radius * 0.026);
+        Math.sin(angle) * radius * 0.46 + (seededRandomAt(2026, randomIndex++) - 0.5) * 0.16;
+      diskPositions[i * 3 + 2] =
+        (seededRandomAt(2026, randomIndex++) - 0.5) * (0.12 + radius * 0.026);
 
       particleColor
-        .copy(random() > 0.48 ? paleBlue : paleViolet)
+        .copy(seededRandomAt(2026, randomIndex++) > 0.48 ? paleBlue : paleViolet)
         .lerp(rose, 0.12 + (1 - centerBias) * 0.22)
         .lerp(pinkWhite, Math.pow(centerBias, 2.2) * 0.62);
       diskColors[i * 3] = particleColor.r;
@@ -439,77 +480,95 @@ function AndromedaGalaxy() {
     }
 
     for (let i = 0; i < armCount; i++) {
-      const radius = 0.38 + Math.pow(random(), 0.88) * 2.35;
+      const radius = 0.38 + Math.pow(seededRandomAt(2026, randomIndex++), 0.88) * 2.35;
       const arm = (i % 2) * Math.PI;
-      const angle = arm + radius * 2.05 + (random() - 0.5) * (0.34 + radius * 0.07);
-      const isBlueArm = random() > 0.58;
+      const angle =
+        arm +
+        radius * 2.05 +
+        (seededRandomAt(2026, randomIndex++) - 0.5) * (0.34 + radius * 0.07);
+      const isBlueArm = seededRandomAt(2026, randomIndex++) > 0.58;
 
       armPositions[i * 3] =
-        Math.cos(angle) * radius * 1.68 + (random() - 0.5) * 0.07;
+        Math.cos(angle) * radius * 1.68 + (seededRandomAt(2026, randomIndex++) - 0.5) * 0.07;
       armPositions[i * 3 + 1] =
-        Math.sin(angle) * radius * 0.46 + (random() - 0.5) * 0.1;
-      armPositions[i * 3 + 2] = (random() - 0.5) * 0.13;
+        Math.sin(angle) * radius * 0.46 + (seededRandomAt(2026, randomIndex++) - 0.5) * 0.1;
+      armPositions[i * 3 + 2] = (seededRandomAt(2026, randomIndex++) - 0.5) * 0.13;
 
       particleColor
         .copy(isBlueArm ? electricBlue : magenta)
-        .lerp(isBlueArm ? paleBlue : paleViolet, 0.45 + random() * 0.42);
+        .lerp(
+          isBlueArm ? paleBlue : paleViolet,
+          0.45 + seededRandomAt(2026, randomIndex++) * 0.42,
+        );
       armColors[i * 3] = particleColor.r;
       armColors[i * 3 + 1] = particleColor.g;
       armColors[i * 3 + 2] = particleColor.b;
     }
 
     for (let i = 0; i < coreCount; i++) {
-      const radius = Math.pow(random(), 2.7) * 0.78;
-      const angle = random() * Math.PI * 2;
+      const radius = Math.pow(seededRandomAt(2026, randomIndex++), 2.7) * 0.78;
+      const angle = seededRandomAt(2026, randomIndex++) * Math.PI * 2;
 
       corePositions[i * 3] = Math.cos(angle) * radius * 1.5;
       corePositions[i * 3 + 1] = Math.sin(angle) * radius * 0.48;
-      corePositions[i * 3 + 2] = (random() - 0.5) * 0.15;
+      corePositions[i * 3 + 2] = (seededRandomAt(2026, randomIndex++) - 0.5) * 0.15;
 
-      particleColor.copy(rose).lerp(warmWhite, 0.72 + random() * 0.27);
+      particleColor
+        .copy(rose)
+        .lerp(warmWhite, 0.72 + seededRandomAt(2026, randomIndex++) * 0.27);
       coreColors[i * 3] = particleColor.r;
       coreColors[i * 3 + 1] = particleColor.g;
       coreColors[i * 3 + 2] = particleColor.b;
     }
 
     for (let i = 0; i < dustCount; i++) {
-      const radius = 0.58 + random() * 1.92;
+      const radius = 0.58 + seededRandomAt(2026, randomIndex++) * 1.92;
       const arm = (i % 2) * Math.PI;
-      const angle = arm + radius * 2.04 + (random() - 0.5) * 0.14;
+      const angle =
+        arm + radius * 2.04 + (seededRandomAt(2026, randomIndex++) - 0.5) * 0.14;
 
       dustPositions[i * 3] = Math.cos(angle) * radius * 1.67;
       dustPositions[i * 3 + 1] =
-        Math.sin(angle) * radius * 0.46 + (random() - 0.5) * 0.075;
-      dustPositions[i * 3 + 2] = 0.16 + random() * 0.025;
+        Math.sin(angle) * radius * 0.46 +
+        (seededRandomAt(2026, randomIndex++) - 0.5) * 0.075;
+      dustPositions[i * 3 + 2] =
+        0.16 + seededRandomAt(2026, randomIndex++) * 0.025;
 
-      particleColor.copy(darkDust).lerp(violetDust, random() * 0.62);
+      particleColor
+        .copy(darkDust)
+        .lerp(violetDust, seededRandomAt(2026, randomIndex++) * 0.62);
       dustColors[i * 3] = particleColor.r;
       dustColors[i * 3 + 1] = particleColor.g;
       dustColors[i * 3 + 2] = particleColor.b;
     }
 
     for (let i = 0; i < knotCount; i++) {
-      const radius = 0.48 + random() * 2.12;
+      const radius = 0.48 + seededRandomAt(2026, randomIndex++) * 2.12;
       const arm = (i % 2) * Math.PI;
-      const angle = arm + radius * 2.05 + (random() - 0.5) * 0.42;
-      const isBlue = random() > 0.42;
+      const angle =
+        arm + radius * 2.05 + (seededRandomAt(2026, randomIndex++) - 0.5) * 0.42;
+      const isBlue = seededRandomAt(2026, randomIndex++) > 0.42;
 
       knotPositions[i * 3] = Math.cos(angle) * radius * 1.68;
       knotPositions[i * 3 + 1] =
-        Math.sin(angle) * radius * 0.46 + (random() - 0.5) * 0.1;
-      knotPositions[i * 3 + 2] = 0.19 + random() * 0.035;
+        Math.sin(angle) * radius * 0.46 + (seededRandomAt(2026, randomIndex++) - 0.5) * 0.1;
+      knotPositions[i * 3 + 2] =
+        0.19 + seededRandomAt(2026, randomIndex++) * 0.035;
 
       particleColor
         .copy(isBlue ? electricBlue : magenta)
-        .lerp(isBlue ? warmWhite : pinkWhite, 0.35 + random() * 0.58);
+        .lerp(
+          isBlue ? warmWhite : pinkWhite,
+          0.35 + seededRandomAt(2026, randomIndex++) * 0.58,
+        );
       knotColors[i * 3] = particleColor.r;
       knotColors[i * 3 + 1] = particleColor.g;
       knotColors[i * 3 + 2] = particleColor.b;
     }
 
     for (let i = 0; i < companionCount; i++) {
-      const radius = Math.pow(random(), 1.28) * 0.95;
-      const angle = random() * Math.PI * 2;
+      const radius = Math.pow(seededRandomAt(2026, randomIndex++), 1.28) * 0.95;
+      const angle = seededRandomAt(2026, randomIndex++) * Math.PI * 2;
       const localX = Math.cos(angle) * radius * 0.34;
       const localY = Math.sin(angle) * radius * 1.08;
       const rotation = -0.46;
@@ -518,11 +577,12 @@ function AndromedaGalaxy() {
         -1.25 + localX * Math.cos(rotation) - localY * Math.sin(rotation);
       companionPositions[i * 3 + 1] =
         2.15 + localX * Math.sin(rotation) + localY * Math.cos(rotation);
-      companionPositions[i * 3 + 2] = (random() - 0.5) * 0.1;
+      companionPositions[i * 3 + 2] =
+        (seededRandomAt(2026, randomIndex++) - 0.5) * 0.1;
 
       particleColor
         .copy(deepBlue)
-        .lerp(electricBlue, 0.38 + random() * 0.46)
+        .lerp(electricBlue, 0.38 + seededRandomAt(2026, randomIndex++) * 0.46)
         .lerp(paleBlue, Math.pow(1 - radius / 0.95, 3) * 0.5);
       companionColors[i * 3] = particleColor.r;
       companionColors[i * 3 + 1] = particleColor.g;
@@ -942,11 +1002,11 @@ function BlackHole() {
 function Comets() {
   const cometRefs = React.useRef<THREE.Group[]>([]);
   
-  useFrame((state) => {
-    cometRefs.current.forEach((ref, i) => {
+  useFrame((_, delta) => {
+    cometRefs.current.forEach((ref) => {
       if (ref) {
-        ref.position.x += 0.1;
-        ref.position.y -= 0.05;
+        ref.position.x += delta * 6;
+        ref.position.y -= delta * 3;
         if (ref.position.x > 10) {
           ref.position.x = -15 - Math.random() * 10;
           ref.position.y = 5 + Math.random() * 5;
@@ -980,10 +1040,11 @@ function Comets() {
 function AnimatedBackground() {
   const points = React.useMemo(() => {
     const p = new Float32Array(2000 * 3);
+    let randomIndex = 0;
     for (let i = 0; i < 2000; i++) {
-      p[i * 3] = (Math.random() - 0.5) * 15;
-      p[i * 3 + 1] = (Math.random() - 0.5) * 15;
-      p[i * 3 + 2] = (Math.random() - 0.5) * 15;
+      p[i * 3] = (seededRandomAt(44001, randomIndex++) - 0.5) * 15;
+      p[i * 3 + 1] = (seededRandomAt(44001, randomIndex++) - 0.5) * 15;
+      p[i * 3 + 2] = (seededRandomAt(44001, randomIndex++) - 0.5) * 15;
     }
     return p;
   }, []);
@@ -1011,22 +1072,44 @@ function AnimatedBackground() {
       
       <Comets />
       
-      <MilkyWay position={[3, 1, -8]} color="#ffffff" scale={4} rotation={[Math.PI / 4, 0, 0]} />
-      <Nebula position={[-5, -2, -12]} color="#7000ff" scale={[2, 1, 1]} />
-      <Nebula position={[6, -4, -15]} color="#00f2ff" scale={[3, 1.5, 1]} />
+      <MilkyWay position={[3, 1, -8]} color="#ffffff" seed={11001} scale={4} rotation={[Math.PI / 4, 0, 0]} />
+      <SceneAssetErrorBoundary>
+        <React.Suspense fallback={null}>
+          <Nebula position={[-5, -2, -12]} color="#7000ff" seed={22001} scale={[2, 1, 1]} />
+          <Nebula position={[6, -4, -15]} color="#00f2ff" seed={22002} scale={[3, 1.5, 1]} />
+        </React.Suspense>
+      </SceneAssetErrorBoundary>
       
-      <SpiralGalaxy position={[5, 4, -10]} color="#7000ff" scale={2} />
-      <SpiralGalaxy position={[-8, -6, -15]} color="#00f2ff" scale={3} />
+      <SpiralGalaxy position={[5, 4, -10]} color="#7000ff" seed={33001} scale={2} />
+      <SpiralGalaxy position={[-8, -6, -15]} color="#00f2ff" seed={33002} scale={3} />
       <BlackHole />
       <AndromedaGalaxy />
     </group>
   );
 }
 
-export default function ThreeCanvas() {
+export default function ThreeCanvas({
+  maxDpr = 2,
+  presentation = 'standalone',
+}: ThreeCanvasProps) {
+  const isOverlay = presentation === 'overlay';
+
   return (
-    <div className="fixed inset-0 -z-10 bg-[#050505]">
-      <Canvas camera={{ position: [0, 0, 5], fov: 75 }}>
+    <div
+      aria-hidden={isOverlay ? undefined : 'true'}
+      className={isOverlay ? 'relative h-full w-full overflow-hidden' : 'fixed inset-0 -z-10 overflow-hidden bg-[#050505]'}
+    >
+      <Canvas
+        className="block h-full w-full"
+        style={{ display: 'block', width: '100%', height: '100%' }}
+        camera={{ position: [0, 0, 5], fov: 75 }}
+        dpr={[1, maxDpr]}
+        frameloop="always"
+        gl={{ alpha: true, antialias: true, powerPreference: 'high-performance' }}
+        onCreated={({ gl }) => {
+          gl.setClearColor('#000000', 0);
+        }}
+      >
         <ambientLight intensity={0.5} />
         <pointLight position={[10, 10, 10]} intensity={1} color="#00f2ff" />
         <pointLight position={[-10, -10, -10]} intensity={1} color="#7000ff" />

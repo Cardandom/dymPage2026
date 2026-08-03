@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Plus, Minus } from 'lucide-react';
@@ -46,6 +48,8 @@ export default function FAQ() {
         <div className="space-y-4">
           {faqs.map((faq, i) => {
             const isOpen = openIndex === i;
+            const triggerId = `faq-trigger-${i}`;
+            const panelId = `faq-panel-${i}`;
 
             return (
               <motion.div
@@ -57,13 +61,17 @@ export default function FAQ() {
                 className={`rounded-[2rem] border bg-white shadow-[0_18px_70px_rgba(15,23,42,0.05)] overflow-hidden transition-all ${isOpen ? 'border-brand-neon/30' : 'border-slate-200'}`}
               >
                 <button
+                  id={triggerId}
+                  type="button"
+                  aria-expanded={isOpen}
+                  aria-controls={panelId}
                   onClick={() => setOpenIndex(isOpen ? null : i)}
-                  className="w-full px-8 sm:px-10 py-7 flex items-center justify-between text-left gap-6 group"
+                  className="group flex w-full items-center justify-between gap-6 px-8 py-7 text-left focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-brand-neon sm:px-10"
                 >
                   <span className={`text-xl md:text-2xl font-bold transition-colors ${isOpen ? 'text-slate-900' : 'text-slate-800 group-hover:text-brand-neon'}`}>
                     {faq.q}
                   </span>
-                  <div className={`w-11 h-11 rounded-full flex items-center justify-center border transition-all ${isOpen ? 'bg-brand-neon border-brand-neon text-white' : 'bg-slate-50 border-slate-200 text-slate-900 group-hover:border-brand-neon group-hover:text-brand-neon'}`}>
+                  <div aria-hidden="true" className={`w-11 h-11 rounded-full flex items-center justify-center border transition-all ${isOpen ? 'bg-brand-neon border-brand-neon text-white' : 'bg-slate-50 border-slate-200 text-slate-900 group-hover:border-brand-neon group-hover:text-brand-neon'}`}>
                     {isOpen ? <Minus size={20} /> : <Plus size={20} />}
                   </div>
                 </button>
@@ -71,6 +79,9 @@ export default function FAQ() {
                 <AnimatePresence>
                   {isOpen && (
                     <motion.div
+                      id={panelId}
+                      role="region"
+                      aria-labelledby={triggerId}
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}

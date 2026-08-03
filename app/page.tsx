@@ -1,0 +1,76 @@
+import AIAutomation from "@/src/components/AIAutomation";
+import CTA from "@/src/components/CTA";
+import FAQ from "@/src/components/FAQ";
+import Footer from "@/src/components/Footer";
+import Hero from "@/src/components/Hero";
+import Marquee from "@/src/components/Marquee";
+import Navbar from "@/src/components/Navbar";
+import Process from "@/src/components/Process";
+import Services from "@/src/components/Services";
+import Stats from "@/src/components/Stats";
+import Testimonials from "@/src/components/Testimonials";
+import NextBrandLogo from "@/src/components/next/NextBrandLogo";
+import NextFeaturedProjects from "@/src/components/next/NextFeaturedProjects";
+import NextPreloader from "@/src/components/next/NextPreloader";
+import NextThreeCanvas from "@/src/components/next/NextThreeCanvas";
+import StaticCosmicBackground from "@/src/components/next/StaticCosmicBackground";
+
+export default function HomePage() {
+  const currentYear = new Date().getFullYear();
+
+  return (
+    <div className="next-site relative isolate min-h-screen overflow-x-hidden text-white selection:bg-brand-neon selection:text-white">
+      <StaticCosmicBackground />
+      <NextThreeCanvas />
+      <NextPreloader />
+
+      <noscript>
+        <style>{`
+          .next-preloader-failsafe { display: none !important; }
+          .next-site [style*="opacity: 0"],
+          .next-site [style*="opacity:0"] {
+            opacity: 1 !important;
+            transform: none !important;
+          }
+        `}</style>
+      </noscript>
+
+      <div className="relative z-10">
+        <Navbar
+          brandLogo={(
+            <NextBrandLogo
+              className="h-[4.5rem] w-24 sm:h-20 sm:w-28"
+              compact
+              loading="eager"
+              sizes="(max-width: 639px) 96px, 112px"
+            />
+          )}
+        />
+
+        <main>
+          <Hero />
+          <Stats />
+          <Services />
+          <Marquee />
+          <AIAutomation />
+          <NextFeaturedProjects />
+          <Process />
+          <Testimonials />
+          <FAQ />
+          <CTA />
+        </main>
+
+        <Footer
+          year={currentYear}
+          brandLogo={(
+            <NextBrandLogo
+              className="h-11 w-11"
+              sizes="44px"
+              variant="footer"
+            />
+          )}
+        />
+      </div>
+    </div>
+  );
+}

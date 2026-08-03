@@ -1,8 +1,14 @@
+'use client';
+
 import React from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
 import { cn } from '@/src/lib/utils';
 import BrandLogo from './BrandLogo';
+
+type NavbarProps = {
+  brandLogo?: React.ReactNode;
+};
 
 const navLinks = [
   { name: 'Inicio', href: '#hero' },
@@ -12,18 +18,33 @@ const navLinks = [
   { name: 'Contacto', href: '#contact' },
 ];
 
-export default function Navbar() {
+export default function Navbar({ brandLogo }: NavbarProps) {
   const [isScrolled, setIsScrolled] = React.useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
 
   React.useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  React.useEffect(() => {
+    if (!mobileMenuOpen) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setMobileMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [mobileMenuOpen]);
+
   return (
-    <nav 
+    <nav
+      aria-label="Navegación principal"
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-500 px-6 sm:px-12 py-4",
         isScrolled ? "bg-brand-purple/80 backdrop-blur-md border-b border-white/10 py-2" : "bg-transparent"
@@ -31,7 +52,7 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <div className="flex items-center">
-          <BrandLogo className="h-[4.5rem] w-24 sm:h-20 sm:w-28" compact />
+          {brandLogo ?? <BrandLogo className="h-[4.5rem] w-24 sm:h-20 sm:w-28" compact />}
         </div>
 
         {/* Desktop Links */}
@@ -40,21 +61,25 @@ export default function Navbar() {
             <a 
               key={link.name} 
               href={link.href}
-              className="text-sm font-medium text-white/70 hover:text-white transition-colors"
+              className="rounded-sm text-sm font-medium text-white/70 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-neon"
             >
               {link.name}
             </a>
           ))}
-          <button className="px-6 py-2 rounded-full glass border-white/20 hover:bg-brand-neon transition-all font-semibold flex items-center gap-1 group">
+          <button type="button" className="group flex items-center gap-1 rounded-full border-white/20 px-6 py-2 font-semibold glass transition-all hover:bg-brand-neon focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-neon">
             <span className="text-white group-hover:text-brand-purple transition-colors">Agendar Call</span>
             <ArrowUpRight size={16} className="text-brand-neon group-hover:text-brand-purple" />
           </button>
         </div>
 
         {/* Mobile Menu Toggle */}
-        <button 
-          className="md:hidden text-white"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+        <button
+          type="button"
+          aria-label={mobileMenuOpen ? 'Cerrar menú de navegación' : 'Abrir menú de navegación'}
+          aria-expanded={mobileMenuOpen}
+          aria-controls="mobile-navigation"
+          className="rounded-md text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-neon md:hidden"
+          onClick={() => setMobileMenuOpen((isOpen) => !isOpen)}
         >
           {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
@@ -64,6 +89,7 @@ export default function Navbar() {
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
+            id="mobile-navigation"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
@@ -74,12 +100,12 @@ export default function Navbar() {
                 key={link.name} 
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-2xl font-display font-semibold hover:text-brand-neon transition-colors"
+                className="rounded-sm text-2xl font-display font-semibold transition-colors hover:text-brand-neon focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-neon"
               >
                 {link.name}
               </a>
             ))}
-            <button className="w-full py-4 rounded-xl bg-brand-neon text-white font-bold">
+            <button type="button" className="w-full rounded-xl bg-brand-neon py-4 font-bold text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">
               Agendar Call
             </button>
           </motion.div>
