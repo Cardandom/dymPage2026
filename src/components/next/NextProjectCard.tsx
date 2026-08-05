@@ -2,9 +2,9 @@
 
 import Image from 'next/image';
 import { motion } from 'motion/react';
-import type { NextProject } from './nextProjectsData';
+import type { ProjectCaseStudy } from '../../data/projectCaseStudies';
 
-type NextProjectCardProps = NextProject & {
+type NextProjectCardProps = ProjectCaseStudy & {
   index: number;
 };
 
@@ -12,19 +12,15 @@ const coverSizes = '(max-width: 767px) calc(100vw - 3rem), (max-width: 1375px) c
 const logoSizes = '(max-width: 767px) 70vw, (max-width: 1375px) 29vw, 357px';
 
 export default function NextProjectCard({
-  id,
-  title,
-  category,
-  description,
-  image,
-  imageAlt,
-  imagePosition,
+  name,
+  service,
+  shortDescription,
+  coverImage,
   logo,
-  logoAlt,
   tags,
   slug,
   ariaLabel,
-  results,
+  badge,
   index,
 }: NextProjectCardProps) {
   return (
@@ -39,12 +35,12 @@ export default function NextProjectCard({
     >
       <div className="relative aspect-4/3 overflow-hidden rounded-[2.5rem] mb-8 border border-slate-200 bg-white shadow-[0_18px_70px_rgba(15,23,42,0.08)]">
         <Image
-          src={image}
-          alt={imageAlt}
+          src={coverImage.src}
+          alt={coverImage.alt}
           fill
           sizes={coverSizes}
           className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 grayscale group-hover:grayscale-0"
-          style={imagePosition ? { objectPosition: imagePosition } : undefined}
+          style={coverImage.objectPosition ? { objectPosition: coverImage.objectPosition } : undefined}
           referrerPolicy="no-referrer"
           loading="lazy"
         />
@@ -54,8 +50,8 @@ export default function NextProjectCard({
           <div className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center bg-black/40 opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100">
             <div className="w-[70%] overflow-hidden rounded-xl bg-white shadow-[0_18px_60px_rgba(0,0,0,0.28)] [clip-path:inset(0_100%_0_0)] transition-[clip-path] duration-700 ease-out group-hover:[clip-path:inset(0_0_0_0)] md:w-[58%]">
               <Image
-                src={logo}
-                alt={logoAlt ?? `Logo de ${title}`}
+                src={logo.src}
+                alt={logo.alt ?? `Logo de ${name}`}
                 sizes={logoSizes}
                 className="block h-auto w-full object-contain"
                 loading="lazy"
@@ -65,25 +61,25 @@ export default function NextProjectCard({
         )}
 
         <div className="absolute top-8 right-8 z-20 px-6 py-2 bg-slate-900 text-white rounded-full font-bold text-sm translate-x-4 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all shadow-lg">
-          {results}
+          {badge}
         </div>
       </div>
 
       <div className="flex justify-between items-start gap-6">
         <div className="min-w-0 flex-1">
           <h3
-            id={`${id}-title`}
+            id={`${slug}-title`}
             className="text-3xl font-display font-bold text-slate-900 group-hover:text-brand-neon transition-colors"
           >
-            {title}
+            {name}
           </h3>
           <p className="text-slate-500 uppercase tracking-[0.2em] text-xs mt-2">
-            {category}
+            {service}
           </p>
 
-          {description && (
+          {shortDescription && (
             <p className="mt-4 max-w-xl text-sm leading-6 text-slate-600">
-              {description}
+              {shortDescription}
             </p>
           )}
 
