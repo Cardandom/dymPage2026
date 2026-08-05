@@ -4,6 +4,12 @@ import kairosIGAsset from '../assets/projects/kairosIG.webp';
 import kairosLogoAsset from '../assets/projects/kairos-logo.webp';
 import reinaSophiaLogoAsset from '../assets/projects/reina-sophia-logo.webp';
 import reinaSophiaAsset from '../assets/projects/reinaSophia.webp';
+import theCocoTravelCover from '../assets/projects/the-coco-travel/the-coco-travel-cover.jpg';
+import theCocoTravelExperience from '../assets/projects/the-coco-travel/the-coco-travel-experience.jpg';
+import theCocoTravelGroup from '../assets/projects/the-coco-travel/the-coco-travel-group.jpg';
+import theCocoTravelLogo from '../assets/projects/the-coco-travel/the-coco-travel-logo.png';
+import theCocoTravelPeru from '../assets/projects/the-coco-travel/the-coco-travel-peru.jpg';
+import theCocoTravelQuito from '../assets/projects/the-coco-travel/the-coco-travel-quito.jpg';
 import unaVidaConscienteAsset from '../assets/projects/unaVidaConciente.webp';
 import vidaLogoAsset from '../assets/projects/vida-logo.webp';
 
@@ -145,6 +151,97 @@ export const projectCaseStudies = [
     order: 4,
     ariaLabel: 'Ver caso de estudio de Reina Sophia Residences',
     badge: 'Proyecto real',
+  },
+  {
+    slug: 'the-coco-travel',
+    name: 'THE COCO TRAVEL',
+    service: 'Diseño y desarrollo de sitio web turístico',
+    shortDescription:
+      'Sitio web turístico bilingüe para presentar destinos, tours y experiencias en Ecuador y Perú, con navegación responsive y contacto internacional.',
+    longDescription: [
+      'The Coco Travel necesitaba una plataforma digital capaz de organizar y presentar su oferta turística de forma clara para visitantes internacionales.',
+      'Se desarrolló un sitio web bilingüe con páginas dedicadas a destinos en Ecuador y Perú, servicios especializados, tours, experiencias y programas turísticos descargables.',
+      'La solución incorpora navegación responsive, carruseles visuales, formulario de contacto internacional, selector de idioma y contenidos estructurados para facilitar la exploración de cada experiencia.',
+    ],
+    coverImage: {
+      src: theCocoTravelCover,
+      alt: 'Laguna del Quilotoa presentada en el sitio web de The Coco Travel',
+      objectPosition: 'center',
+    },
+    logo: {
+      src: theCocoTravelLogo,
+      alt: 'Logo de The Coco Travel',
+    },
+    gallery: [
+      {
+        src: theCocoTravelExperience,
+        alt: 'Experiencia turística en la naturaleza presentada por The Coco Travel',
+      },
+      {
+        src: theCocoTravelGroup,
+        alt: 'Grupo de viajeros durante una experiencia de The Coco Travel en Ecuador',
+      },
+      {
+        src: theCocoTravelQuito,
+        alt: 'Mitad del Mundo en Quito presentada en el sitio de The Coco Travel',
+      },
+      {
+        src: theCocoTravelPeru,
+        alt: 'Machu Picchu presentado entre los destinos de The Coco Travel',
+      },
+    ],
+    tags: ['Diseño web', 'Turismo', 'Sitio bilingüe', 'Experiencias'],
+    technologies: [
+      'React',
+      'Vite',
+      'Tailwind CSS',
+      'React Router',
+      'i18next',
+      'Swiper',
+      'AOS',
+      'EmailJS',
+    ],
+    services: [
+      'Diseño y desarrollo web',
+      'Diseño responsive',
+      'Arquitectura de información',
+      'Internacionalización en inglés y español',
+      'Presentación de destinos y tours',
+      'Integración de formulario de contacto',
+      'Integración de itinerarios descargables',
+    ],
+    challenges: [
+      'Organizar una oferta amplia de destinos, servicios, tours y experiencias',
+      'Presentar contenido para una audiencia internacional',
+      'Facilitar la exploración de programas turísticos desde dispositivos móviles',
+      'Centralizar información de Ecuador y Perú dentro de una experiencia consistente',
+    ],
+    solution: [
+      'Sitio web multipágina con navegación mediante React Router',
+      'Contenido bilingüe administrado mediante i18next',
+      'Páginas individuales para destinos, servicios y tours',
+      'Carruseles visuales y galerías de experiencias',
+      'Itinerarios turísticos descargables en PDF',
+      'Formulario internacional con selector telefónico e integración de EmailJS',
+      'Mapa integrado y enlaces de contacto',
+    ],
+    results: [
+      'Sitio web publicado en el dominio oficial de The Coco Travel',
+      'Dieciocho rutas para destinos, servicios, tours y contenido corporativo',
+      'Experiencia disponible en inglés y español',
+      'Diseño adaptado a dispositivos móviles y de escritorio',
+    ],
+    websiteUrl: 'https://www.thecocotravel.com/',
+    instagramUrl: 'https://www.instagram.com/co.cotravel/',
+    status: 'published',
+    seoTitle: 'The Coco Travel | Desarrollo web turístico bilingüe',
+    seoDescription:
+      'Caso de éxito de The Coco Travel: sitio web turístico bilingüe y responsive para presentar destinos, tours y experiencias en Ecuador y Perú.',
+    ogImage: theCocoTravelCover,
+    featured: true,
+    order: 6,
+    ariaLabel: 'Ver caso de éxito de The Coco Travel',
+    badge: 'Sitio publicado',
   },
 ] as const satisfies readonly ProjectCaseStudy[];
 
