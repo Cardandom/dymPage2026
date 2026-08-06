@@ -46,7 +46,7 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
   const project = getPublishedProject(slug);
   const title = project.seoTitle ?? `${project.name} | ${SITE_NAME}`;
   const description = project.seoDescription ?? project.shortDescription;
-  const canonical = `${SITE_URL}/proyectos/${project.slug}`;
+  const canonical = `${SITE_URL}/proyectos/${project.slug}/`;
   const image = getMetadataImage(project);
 
   return {
