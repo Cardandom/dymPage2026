@@ -2,8 +2,8 @@
 
 import { ExternalLink } from 'lucide-react';
 import { motion } from 'motion/react';
+import { featuredProjectCaseStudies } from '../../data/projectCaseStudies';
 import NextProjectCard from './NextProjectCard';
-import { nextFeaturedProjects } from './nextProjectsData';
 
 export default function NextFeaturedProjects() {
   return (
@@ -37,9 +37,9 @@ export default function NextFeaturedProjects() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          {nextFeaturedProjects.map((project, index) => (
+          {featuredProjectCaseStudies.map((project, index) => (
             <NextProjectCard
-              key={project.id}
+              key={project.slug}
               {...project}
               index={index}
             />
