@@ -1,3 +1,7 @@
+import { WHATSAPP_MESSAGES, getWhatsAppUrl } from '@/src/config/contact';
+
+const scheduleCallUrl = getWhatsAppUrl(WHATSAPP_MESSAGES.scheduleCall);
+
 export default function CTA() {
   return (
     <section id="contact" className="py-32 px-6 sm:px-12 relative overflow-hidden">
@@ -13,12 +17,14 @@ export default function CTA() {
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-          <button className="px-12 py-5 bg-brand-neon text-white font-bold rounded-full hover:scale-105 transition-all text-lg cursor-pointer">
+          <a
+            href={scheduleCallUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-12 py-5 bg-brand-neon text-white font-bold rounded-full hover:scale-105 transition-all text-lg cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-neon"
+          >
             Agendar reunión estratégica
-          </button>
-          <button className="px-12 py-5 glass border-white/20 rounded-full font-bold hover:bg-white/10 transition-all text-lg cursor-pointer">
-            Ver casos de éxito
-          </button>
+          </a>
         </div>
       </div>
     </section>
