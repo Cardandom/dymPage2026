@@ -12,7 +12,7 @@ import reinaSophiaHome from '../assets/projects/reina-sophia/reina-sophia-home.w
 import reinaSophiaModelLuca from '../assets/projects/reina-sophia/reina-sophia-model-luca.webp';
 import reinaSophiaModelOliver from '../assets/projects/reina-sophia/reina-sophia-model-oliver.webp';
 import reinaSophiaLogoAsset from '../assets/projects/reina-sophia-logo.webp';
-import theCocoTravelCover from '../assets/projects/the-coco-travel/the-coco-travel-cover.jpg';
+import theCocoTravelCover from '../assets/projects/the-coco-travel/the-coco-travel-cover.webp';
 import theCocoTravelExperience from '../assets/projects/the-coco-travel/the-coco-travel-experience.jpg';
 import theCocoTravelGroup from '../assets/projects/the-coco-travel/the-coco-travel-group.jpg';
 import theCocoTravelLogo from '../assets/projects/the-coco-travel/the-coco-travel-logo.png';
