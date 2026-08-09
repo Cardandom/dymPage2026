@@ -14,7 +14,12 @@ import theCocoTravelGroup from '../assets/projects/the-coco-travel/the-coco-trav
 import theCocoTravelLogo from '../assets/projects/the-coco-travel/the-coco-travel-logo.png';
 import theCocoTravelPeru from '../assets/projects/the-coco-travel/the-coco-travel-peru.jpg';
 import theCocoTravelQuito from '../assets/projects/the-coco-travel/the-coco-travel-quito.jpg';
-import unaVidaConscienteAsset from '../assets/projects/unaVidaConciente.webp';
+import unaVidaDiagnosticSolution from '../assets/projects/una-vida-consciente/una-vida-diagnostic-solution.png';
+import unaVidaFaq from '../assets/projects/una-vida-consciente/una-vida-faq.png';
+import unaVidaHeroDesktop from '../assets/projects/una-vida-consciente/una-vida-hero-desktop.png';
+import unaVidaMobile from '../assets/projects/una-vida-consciente/una-vida-mobile.png';
+import unaVidaOffer from '../assets/projects/una-vida-consciente/una-vida-offer.png';
+import unaVidaResources from '../assets/projects/una-vida-consciente/una-vida-resources.png';
 import vidaLogoAsset from '../assets/projects/vida-logo.webp';
 
 export type ProjectStatus = 'draft' | 'published' | 'archived';
@@ -199,21 +204,96 @@ export const projectCaseStudies = [
     slug: 'una-vida-consciente',
     name: 'UNA VIDA CONSCIENTE',
     service: 'Landing page / Embudo de ventas',
-    shortDescription: 'Diseño y desarrollo de una landing page tipo embudo de ventas para el producto digital “Emprendiendo con un hijo autista”, enfocada en comunicar una oferta clara, conectar emocionalmente con madres cuidadoras y dirigir el tráfico hacia Hotmart mediante campañas de Google Ads.',
+    shortDescription:
+      'Landing page y embudo digital para presentar el producto “Emprendiendo con un Hijo Autista”, explicar sus recursos, resolver objeciones y dirigir la compra hacia un checkout externo de Hotmart.',
+    longDescription: [
+      'El proyecto consistió en desarrollar una experiencia de venta digital para presentar de forma clara una oferta de recursos dirigida a madres cuidadoras y familias relacionadas con el autismo.',
+      'La landing construye un recorrido progresivo desde el contexto y las necesidades de la audiencia hasta la explicación de la solución, los recursos incluidos, testimonios, preguntas frecuentes y la oferta final.',
+      'La experiencia conecta los distintos llamados a la acción con un checkout externo de Hotmart e incorpora una base de medición mediante Google Tag Manager, además de páginas de contacto, privacidad y términos.',
+    ],
     coverImage: {
-      src: unaVidaConscienteAsset,
-      alt: 'Landing page de Una Vida Consciente',
+      src: unaVidaHeroDesktop,
+      alt: 'Hero de la landing page del producto Emprendiendo con un Hijo Autista',
     },
     logo: {
       src: vidaLogoAsset,
       alt: 'Logo Una Vida Consciente',
     },
-    gallery: [],
-    tags: ['Landing Page', 'Embudo de ventas', 'Hotmart', 'Google Ads', 'Conversión'],
-    technologies: [],
-    services: [],
-    challenges: [],
+    gallery: [
+      {
+        src: unaVidaHeroDesktop,
+        alt: 'Hero de la landing page del producto Emprendiendo con un Hijo Autista',
+      },
+      {
+        src: unaVidaDiagnosticSolution,
+        alt: 'Secciones de diagnóstico y solución dentro del embudo digital',
+      },
+      {
+        src: unaVidaResources,
+        alt: 'Presentación de los recursos incluidos en la oferta digital',
+      },
+      {
+        src: unaVidaOffer,
+        alt: 'Sección de oferta y llamado a la acción conectado con Hotmart',
+      },
+      {
+        src: unaVidaFaq,
+        alt: 'Preguntas frecuentes de la landing page',
+      },
+      {
+        src: unaVidaMobile,
+        alt: 'Experiencia responsive de la landing page en dispositivo móvil',
+      },
+    ],
+    tags: ['Landing Page', 'Embudo de ventas', 'Hotmart', 'Google Tag Manager'],
+    technologies: [
+      'Next.js',
+      'React',
+      'Tailwind CSS',
+      'Motion',
+      'Google Tag Manager',
+      'Hotmart',
+    ],
+    services: [
+      'Diseño y desarrollo de landing page',
+      'Arquitectura de embudo de ventas',
+      'Organización de propuesta, beneficios y oferta',
+      'Integración con checkout externo de Hotmart',
+      'Implementación base de Google Tag Manager',
+      'Diseño responsive',
+      'Metadata y SEO técnico básico',
+      'Implementación de páginas legales y contacto por email',
+    ],
+    challenges: [
+      'Comunicar una oferta sensible y especializada de forma clara y respetuosa',
+      'Organizar múltiples recursos dentro de una propuesta fácil de comprender',
+      'Construir continuidad entre problema, solución, confianza y compra',
+      'Resolver objeciones antes del CTA final',
+      'Mantener una experiencia coherente en escritorio y dispositivos móviles',
+    ],
+    solution: [
+      'Landing page estructurada mediante una progresión narrativa orientada a conversión',
+      'Secciones específicas para contexto, diagnóstico, solución, beneficios y recursos',
+      'Presentación diferenciada de los elementos incluidos en la oferta',
+      'Testimonios y preguntas frecuentes como elementos de confianza',
+      'CTAs distribuidos a lo largo de la experiencia y conectados con Hotmart',
+      'Integración de Google Tag Manager como base para medición',
+      'Contacto por email y páginas independientes de privacidad y términos',
+    ],
+    results: [
+      'Landing funcional desarrollada con Next.js y una arquitectura orientada al recorrido de compra',
+      'Checkout externo de Hotmart integrado en los principales llamados a la acción',
+      'Google Tag Manager cargado a nivel de aplicación',
+      'Experiencia responsive para escritorio y dispositivos móviles',
+      'Contacto, política de privacidad y términos integrados dentro de la experiencia',
+    ],
     status: 'published',
+    websiteUrl: undefined,
+    instagramUrl: undefined,
+    seoTitle: 'Una Vida Consciente | Landing y embudo para producto digital',
+    seoDescription:
+      'Caso de desarrollo de una landing page y embudo digital para presentar recursos, resolver objeciones y dirigir la compra hacia un checkout de Hotmart.',
+    ogImage: unaVidaHeroDesktop,
     featured: true,
     order: 3,
     ariaLabel: 'Ver caso de estudio de Una Vida Consciente',
