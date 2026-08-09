@@ -1,6 +1,5 @@
 'use client';
 
-import { ExternalLink } from 'lucide-react';
 import { motion } from 'motion/react';
 import { featuredProjectCaseStudies } from '../../data/projectCaseStudies';
 import NextProjectCard from './NextProjectCard';
@@ -15,7 +14,7 @@ export default function NextFeaturedProjects() {
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-brand-purple/10 blur-[140px] rounded-full -z-10" />
 
       <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+        <div className="mb-20">
           <div className="max-w-3xl">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
@@ -29,11 +28,6 @@ export default function NextFeaturedProjects() {
               Casos de <span className="text-brand-neon italic">exito</span>
             </h2>
           </div>
-
-          <button className="group inline-flex items-center gap-2 text-lg font-semibold text-slate-900 border-b border-slate-300 pb-2 hover:border-brand-neon transition-colors">
-            Ver portafolio completo
-            <ExternalLink size={20} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-          </button>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">

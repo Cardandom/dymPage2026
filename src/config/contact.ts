@@ -12,6 +12,14 @@ export const WHATSAPP_MESSAGES = {
     'Hola, vengo desde dymdigital.com y quisiera coordinar una llamada para hablar sobre mi proyecto.',
   project:
     'Hola, vengo desde dymdigital.com y quisiera conversar sobre un proyecto digital para mi negocio.',
+  performanceAds:
+    'Hola, vengo desde dymdigital.com y quisiera información sobre sus servicios de Performance Ads.',
+  branding:
+    'Hola, vengo desde dymdigital.com y quisiera información sobre sus servicios de branding e identidad visual.',
+  dataAnalytics:
+    'Hola, vengo desde dymdigital.com y quisiera información sobre sus soluciones de Data Analytics y dashboards.',
+  webExperience:
+    'Hola, vengo desde dymdigital.com y quisiera información sobre diseño y desarrollo web.',
 } as const;
 
 export const SOCIAL_LINKS = {
