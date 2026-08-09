@@ -1,5 +1,9 @@
 import type { StaticImageData } from 'next/image';
 import kairosCoverAsset from '../assets/projects/kairos-cover.webp';
+import kairosAbout from '../assets/projects/kairos-web/kairos-about.png';
+import kairosHomeDesktop from '../assets/projects/kairos-web/kairos-home-desktop.png';
+import kairosProjectBonaVista from '../assets/projects/kairos-web/kairos-project-bona-vista.png';
+import kairosServices from '../assets/projects/kairos-web/kairos-services.png';
 import kairosIGAsset from '../assets/projects/kairosIG.webp';
 import kairosLogoAsset from '../assets/projects/kairos-logo.webp';
 import reinaSophiaLogoAsset from '../assets/projects/reina-sophia-logo.webp';
@@ -59,7 +63,13 @@ export const projectCaseStudies = [
     slug: 'kairos-sitio-web',
     name: 'KAIROS DESIGN & CONSTRUCTION',
     service: 'Sitio web corporativo',
-    shortDescription: 'Proyecto web para una empresa de diseño y construcción, enfocado en presentar sus servicios, identidad visual y portafolio de proyectos de forma profesional.',
+    shortDescription:
+      'Sitio corporativo para presentar los servicios de diseño arquitectónico y construcción de Kairos, exhibir proyectos realizados y centralizar el contacto con clientes en Aruba.',
+    longDescription: [
+      'Kairos Design & Construction necesitaba organizar su propuesta de arquitectura y construcción dentro de una presencia digital profesional, visual y coherente con su marca.',
+      'El sitio reúne información corporativa, servicios, proyectos realizados, preguntas frecuentes y canales de contacto, permitiendo explorar el trabajo de la empresa y sus distintas áreas de especialización.',
+      'La experiencia está orientada a presentar proyectos arquitectónicos y de construcción de forma clara, facilitar consultas comerciales y comunicar la presencia de Kairos en Aruba.',
+    ],
     coverImage: {
       src: kairosCoverAsset,
       alt: 'Proyecto web Kairos Design & Construction',
@@ -68,12 +78,58 @@ export const projectCaseStudies = [
       src: kairosLogoAsset,
       alt: 'Logo Kairos Design & Construction',
     },
-    gallery: [],
-    tags: ['Diseño web', 'Construcción', 'Arquitectura', 'Marca corporativa'],
+    gallery: [
+      {
+        src: kairosHomeDesktop,
+        alt: 'Página principal del sitio web de Kairos Design & Construction',
+      },
+      {
+        src: kairosServices,
+        alt: 'Servicios de arquitectura y construcción presentados en el sitio de Kairos',
+      },
+      {
+        src: kairosAbout,
+        alt: 'Sección corporativa de Kairos Design & Construction',
+      },
+      {
+        src: kairosProjectBonaVista,
+        alt: 'Página de proyecto Bona Vista en el sitio web de Kairos Design & Construction',
+      },
+    ],
+    tags: ['Diseño web', 'Arquitectura', 'Construcción', 'Sitio corporativo'],
     technologies: [],
-    services: [],
-    challenges: [],
+    services: [
+      'Diseño y desarrollo web corporativo',
+      'Arquitectura y organización de contenido',
+      'Presentación de servicios y proyectos',
+      'Integración de formulario de contacto',
+      'Adaptación responsive',
+    ],
+    challenges: [
+      'Organizar los distintos servicios de arquitectura y construcción dentro de una navegación clara',
+      'Presentar un portafolio amplio de proyectos sin perder jerarquía visual',
+      'Facilitar las consultas de potenciales clientes',
+      'Comunicar de forma profesional la experiencia y presencia de Kairos en Aruba',
+    ],
+    solution: [
+      'Estructura de navegación para contenido corporativo, servicios y proyectos',
+      'Páginas individuales para presentar proyectos realizados',
+      'Sección de preguntas frecuentes para resolver dudas comerciales',
+      'Formulario y datos de contacto accesibles desde el sitio',
+      'Experiencia visual orientada a destacar arquitectura, construcción y proyectos',
+    ],
+    results: [
+      'Sitio web publicado en el dominio oficial de Kairos Design & Construction',
+      'Portafolio público de proyectos y servicios disponible para potenciales clientes',
+      'Formulario y canales de contacto integrados en la experiencia',
+      'Información corporativa, servicios y preguntas frecuentes centralizados en un mismo sitio',
+    ],
+    websiteUrl: 'https://kairosdesignandconstructions.com/',
     status: 'published',
+    seoTitle: 'Kairos Design & Construction | Caso de éxito web en Aruba',
+    seoDescription:
+      'Caso de éxito de Kairos Design & Construction: sitio corporativo para presentar servicios de arquitectura, construcción, proyectos y contacto en Aruba.',
+    ogImage: kairosCoverAsset,
     featured: true,
     order: 1,
     ariaLabel: 'Ver caso de estudio de Kairos Design & Construction',
