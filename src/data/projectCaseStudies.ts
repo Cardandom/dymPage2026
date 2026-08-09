@@ -6,8 +6,12 @@ import kairosProjectBonaVista from '../assets/projects/kairos-web/kairos-project
 import kairosServices from '../assets/projects/kairos-web/kairos-services.png';
 import kairosIGAsset from '../assets/projects/kairosIG.webp';
 import kairosLogoAsset from '../assets/projects/kairos-logo.webp';
+import reinaSophiaContact from '../assets/projects/reina-sophia/reina-sophia-contact.png';
+import reinaSophiaGallery from '../assets/projects/reina-sophia/reina-sophia-gallery.png';
+import reinaSophiaHome from '../assets/projects/reina-sophia/reina-sophia-home.png';
+import reinaSophiaModelLuca from '../assets/projects/reina-sophia/reina-sophia-model-luca.png';
+import reinaSophiaModelOliver from '../assets/projects/reina-sophia/reina-sophia-model-oliver.png';
 import reinaSophiaLogoAsset from '../assets/projects/reina-sophia-logo.webp';
-import reinaSophiaAsset from '../assets/projects/reinaSophia.webp';
 import theCocoTravelCover from '../assets/projects/the-coco-travel/the-coco-travel-cover.jpg';
 import theCocoTravelExperience from '../assets/projects/the-coco-travel/the-coco-travel-experience.jpg';
 import theCocoTravelGroup from '../assets/projects/the-coco-travel/the-coco-travel-group.jpg';
@@ -303,22 +307,92 @@ export const projectCaseStudies = [
     slug: 'reina-sophia-residences',
     name: 'REINA SOPHIA RESIDENCES',
     service: 'Sitio web inmobiliario',
-    shortDescription: 'Diseño y desarrollo de una plataforma web inmobiliaria para Reina Sophia Residences, enfocada en presentar el proyecto residencial en Aruba, sus modelos de vivienda, beneficios de inversión, galería visual y formularios de captación de clientes potenciales.',
+    shortDescription:
+      'Experiencia web inmobiliaria desarrollada para presentar Reina Sophia Residences, sus modelos residenciales, recursos visuales, ubicación y canales de contacto dentro de una experiencia moderna y responsive.',
+    longDescription: [
+      'Reina Sophia Residences requería una presencia digital capaz de comunicar visualmente una propuesta inmobiliaria en Aruba y organizar información relacionada con sus modelos, características, ubicación y avance del proyecto.',
+      'La experiencia fue concebida para combinar renders, contenido comercial y navegación visual dentro de un recorrido que permita a potenciales compradores conocer el desarrollo y sus distintas propuestas residenciales.',
+      'El código incorpora una arquitectura en desarrollo para autenticación, portal de clientes y administración de avances, sin presentarla como una funcionalidad pública finalizada.',
+    ],
     coverImage: {
-      src: reinaSophiaAsset,
-      alt: 'Sitio web inmobiliario de Reina Sophia Residences',
-      objectPosition: '85% center',
+      src: reinaSophiaHome,
+      alt: 'Hero del sitio web inmobiliario de Reina Sophia Residences en Aruba',
     },
     logo: {
       src: reinaSophiaLogoAsset,
       alt: 'Logo Reina Sophia Residences',
     },
-    gallery: [],
-    tags: ['Real Estate', 'Sitio web', 'Inversión inmobiliaria', 'Supabase', 'Dashboard'],
-    technologies: [],
-    services: [],
-    challenges: [],
+    gallery: [
+      {
+        src: reinaSophiaHome,
+        alt: 'Hero audiovisual del sitio web de Reina Sophia Residences',
+      },
+      {
+        src: reinaSophiaGallery,
+        alt: 'Galería interactiva de renders del proyecto residencial en Aruba',
+      },
+      {
+        src: reinaSophiaModelLuca,
+        alt: 'Página de presentación del modelo residencial Luca Boutique House',
+      },
+      {
+        src: reinaSophiaModelOliver,
+        alt: 'Página de presentación del modelo residencial Oliver Boutique House',
+      },
+      {
+        src: reinaSophiaContact,
+        alt: 'Sección de ubicación, información comercial y contacto del proyecto',
+      },
+    ],
+    tags: ['Real Estate', 'Desarrollo web', 'Experiencia inmobiliaria', 'Aruba'],
+    technologies: [
+      'Next.js',
+      'React',
+      'TypeScript',
+      'Tailwind CSS',
+      'GSAP',
+      'Supabase',
+    ],
+    services: [
+      'Diseño y desarrollo web inmobiliario',
+      'Arquitectura de información',
+      'Presentación visual de proyectos y modelos',
+      'Integración de galerías y renders',
+      'Animación interactiva mediante video y scroll',
+      'Integración de ubicación e información de contacto',
+      'Diseño responsive',
+      'Arquitectura en desarrollo para portal de clientes y administración',
+    ],
+    challenges: [
+      'Comunicar visualmente una propuesta inmobiliaria de alto componente gráfico',
+      'Organizar modelos, renders y características sin saturar la navegación',
+      'Integrar galerías y secuencias audiovisuales manteniendo una experiencia fluida',
+      'Facilitar el acceso a la ubicación y la información de contacto del proyecto',
+      'Preparar una arquitectura privada sin confundir funcionalidades en desarrollo con entregables públicos',
+    ],
+    solution: [
+      'Hero audiovisual orientado a comunicar la propuesta residencial en Aruba',
+      'Galería interactiva para explorar renders y vistas del desarrollo',
+      'Páginas dedicadas a los modelos Luca y Oliver con características y recursos visuales',
+      'Secciones animadas mediante video y desplazamiento controlado con GSAP',
+      'Integración de mapa, ubicación e información comercial visible',
+      'Navegación responsive adaptada a escritorio, tablet y móvil',
+      'Arquitectura en desarrollo con Supabase para autenticación, portal de clientes y administración',
+    ],
+    results: [
+      'Implementación pública disponible para presentar Reina Sophia Residences en Aruba',
+      'Modelos Luca y Oliver organizados en páginas inmobiliarias dedicadas',
+      'Galería de renders integrada dentro de una experiencia interactiva',
+      'Ubicación e información comercial incorporadas al recorrido público',
+      'Experiencia responsive con navegación adaptada a distintos dispositivos',
+    ],
+    websiteUrl: 'https://www.jbsseco.com/',
+    instagramUrl: undefined,
     status: 'published',
+    seoTitle: 'Reina Sophia Residences | Desarrollo web inmobiliario en Aruba',
+    seoDescription:
+      'Caso de desarrollo web para Reina Sophia Residences, una experiencia inmobiliaria orientada a presentar modelos residenciales, renders, ubicación y contacto en Aruba.',
+    ogImage: reinaSophiaHome,
     featured: true,
     order: 4,
     ariaLabel: 'Ver caso de estudio de Reina Sophia Residences',
