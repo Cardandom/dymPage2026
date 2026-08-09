@@ -1,10 +1,10 @@
 'use client';
 
+import Link from 'next/link';
 import { motion } from 'motion/react';
-import { Instagram, Linkedin, Twitter } from 'lucide-react';
+import { Instagram } from 'lucide-react';
 import type { ReactNode } from 'react';
-
-const socialLinks = [Instagram, Linkedin, Twitter];
+import { CONTACT_EMAIL, CONTACT_EMAIL_URL, SOCIAL_LINKS } from '@/src/config/contact';
 
 type FooterProps = {
   year: number;
@@ -41,9 +41,12 @@ export default function Footer({ year, brandLogo }: FooterProps) {
             </motion.h3>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <button className="px-8 py-4 rounded-full border border-slate-200 text-slate-900 font-bold hover:border-brand-neon hover:text-brand-neon transition-colors bg-white">
+              <Link
+                href="/#services"
+                className="px-8 py-4 rounded-full border border-slate-200 text-slate-900 font-bold hover:border-brand-neon hover:text-brand-neon transition-colors bg-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-neon"
+              >
                 Ver servicios
-              </button>
+              </Link>
             </div>
           </div>
 
@@ -52,54 +55,41 @@ export default function Footer({ year, brandLogo }: FooterProps) {
               Navegacion
             </h4>
             <ul className="space-y-4">
-              <li><a href="#" className="text-slate-600 hover:text-brand-neon transition-colors">Inicio</a></li>
-              <li><a href="#" className="text-slate-600 hover:text-brand-neon transition-colors">Servicios</a></li>
-              <li><a href="#" className="text-slate-600 hover:text-brand-neon transition-colors">Casos de Exito</a></li>
-              <li><a href="#" className="text-slate-600 hover:text-brand-neon transition-colors">Estrategia IA</a></li>
+              <li><Link href="/#hero" className="text-slate-600 hover:text-brand-neon transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-neon">Inicio</Link></li>
+              <li><Link href="/#services" className="text-slate-600 hover:text-brand-neon transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-neon">Servicios</Link></li>
+              <li><Link href="/#cases" className="text-slate-600 hover:text-brand-neon transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-neon">Casos de Exito</Link></li>
+              <li><Link href="/#ai" className="text-slate-600 hover:text-brand-neon transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-neon">Estrategia IA</Link></li>
             </ul>
           </div>
 
           <div>
             <h4 className="text-slate-400 text-xs font-bold uppercase tracking-[0.2em] mb-8">
-              Redes Sociales
+              Contacto
             </h4>
-            <div className="flex flex-wrap gap-4">
-              {socialLinks.map((Icon, i) => (
+            <div className="space-y-6">
+              <a
+                href={CONTACT_EMAIL_URL}
+                className="inline-block text-slate-600 hover:text-brand-neon transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-neon"
+              >
+                {CONTACT_EMAIL}
+              </a>
+              <div>
                 <a
-                  key={i}
-                  href="#"
-                  className="w-12 h-12 rounded-full border border-slate-200 bg-white shadow-sm flex items-center justify-center text-slate-900 hover:bg-brand-neon hover:border-brand-neon hover:text-black transition-all"
+                  href={SOCIAL_LINKS.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram de DYM Digital"
+                  className="w-12 h-12 rounded-full border border-slate-200 bg-white shadow-sm flex items-center justify-center text-slate-900 hover:bg-brand-neon hover:border-brand-neon hover:text-black transition-all focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-neon"
                 >
-                  <Icon size={20} />
+                  <Instagram size={20} />
                 </a>
-              ))}
-            </div>
-
-            <div className="mt-8">
-              <h4 className="text-slate-400 text-xs font-bold uppercase tracking-[0.2em] mb-4">
-                Newsletter
-              </h4>
-              <div className="flex gap-2">
-                <input
-                  type="email"
-                  placeholder="Email"
-                  className="bg-slate-50 border border-slate-200 rounded-full px-6 py-3 outline-none focus:border-brand-neon focus:bg-white w-full text-slate-900 placeholder:text-slate-400"
-                />
-                <button className="bg-brand-neon text-black px-5 rounded-full font-bold hover:scale-105 transition-all shadow-sm">
-                  OK
-                </button>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="pt-10 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-6 text-slate-500 text-sm">
+        <div className="pt-10 border-t border-slate-200 text-center text-slate-500 text-sm md:text-left">
           <p>(c) {year} DYM Digital Agency. Todos los derechos reservados.</p>
-          <div className="flex gap-8">
-            <a href="#" className="hover:text-brand-neon transition-colors">Privacidad</a>
-            <a href="#" className="hover:text-brand-neon transition-colors">Terminos</a>
-            <a href="#" className="hover:text-brand-neon transition-colors">Cookies</a>
-          </div>
         </div>
       </div>
     </footer>

@@ -15,9 +15,7 @@ export const WHATSAPP_MESSAGES = {
 } as const;
 
 export const SOCIAL_LINKS = {
-  instagram: null,
-  facebook: null,
-  linkedin: null,
+  instagram: 'https://www.instagram.com/soydymdigital/',
 } as const;
 
 export function getWhatsAppUrl(message?: string) {

@@ -1,4 +1,9 @@
-import { WHATSAPP_MESSAGES, getWhatsAppUrl } from '@/src/config/contact';
+import {
+  CONTACT_EMAIL,
+  CONTACT_EMAIL_URL,
+  WHATSAPP_MESSAGES,
+  getWhatsAppUrl,
+} from '@/src/config/contact';
 
 const scheduleCallUrl = getWhatsAppUrl(WHATSAPP_MESSAGES.scheduleCall);
 
@@ -26,6 +31,15 @@ export default function CTA() {
             Agendar reunión estratégica
           </a>
         </div>
+        <p className="mt-6 text-sm text-white/60">
+          También puedes escribirnos a{' '}
+          <a
+            href={CONTACT_EMAIL_URL}
+            className="rounded-sm font-semibold text-white underline decoration-white/40 underline-offset-4 transition-colors hover:text-brand-neon focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-neon"
+          >
+            {CONTACT_EMAIL}
+          </a>
+        </p>
       </div>
     </section>
   );
