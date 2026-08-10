@@ -8,6 +8,7 @@ import {
   SITE_ORIGIN,
   SITE_TITLE,
 } from "@/src/config/site";
+import WhatsAppFloatingButton from "@/src/components/WhatsAppFloatingButton";
 import "./globals.css";
 
 const montserrat = Montserrat({
@@ -91,7 +92,10 @@ type RootLayoutProps = Readonly<{
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="es" className={`${montserrat.variable} ${jetBrainsMono.variable}`}>
-      <body className="overflow-x-hidden bg-black text-white antialiased">{children}</body>
+      <body className="overflow-x-hidden bg-black text-white antialiased">
+        {children}
+        <WhatsAppFloatingButton />
+      </body>
     </html>
   );
 }
