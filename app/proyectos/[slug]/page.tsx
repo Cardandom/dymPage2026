@@ -7,7 +7,10 @@ import {
   getPublishedProjectCaseStudies,
   type ProjectCaseStudy,
 } from '@/src/data/projectCaseStudies';
+import { WHATSAPP_MESSAGES, getWhatsAppUrl } from '@/src/config/contact';
 import { SITE_NAME, SITE_URL } from '@/src/config/site';
+
+const projectWhatsAppUrl = getWhatsAppUrl(WHATSAPP_MESSAGES.project);
 
 export const dynamicParams = false;
 
@@ -298,12 +301,14 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           <h2 className="mx-auto mt-4 max-w-3xl text-3xl font-black tracking-tight text-white sm:text-5xl">
             ¿Necesitas una solución digital como esta?
           </h2>
-          <Link
-            href="/#contact"
+          <a
+            href={projectWhatsAppUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="mt-9 inline-flex rounded-full bg-brand-neon px-7 py-4 text-sm font-bold text-slate-950 transition-transform hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-4 focus-visible:ring-offset-brand-purple"
           >
             Hablemos de tu proyecto
-          </Link>
+          </a>
         </section>
       </div>
     </main>

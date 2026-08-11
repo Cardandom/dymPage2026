@@ -1,8 +1,12 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { ArrowRight, Sparkles } from 'lucide-react';
+import { WHATSAPP_MESSAGES, getWhatsAppUrl } from '@/src/config/contact';
+
+const generalWhatsAppUrl = getWhatsAppUrl(WHATSAPP_MESSAGES.general);
 
 export default function Hero() {
   const containerRef = React.useRef<HTMLDivElement>(null);
@@ -58,16 +62,24 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.6 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-6"
         >
-          <button className="group relative px-8 py-4 bg-brand-neon text-white font-semibold rounded-full overflow-hidden transition-all hover:scale-105 active:scale-95">
+          <a
+            href={generalWhatsAppUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative px-8 py-4 bg-brand-neon text-white font-semibold rounded-full overflow-hidden transition-all hover:scale-105 active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-neon"
+          >
             <span className="relative z-10 flex items-center gap-2">
               Empezar ahora <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
             </span>
             <div className="absolute inset-0 bg-brand-purple translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-          </button>
+          </a>
           
-          <button className="px-8 py-4 rounded-full glass font-semibold border-white/20 hover:bg-white/10 transition-all">
+          <Link
+            href="/#services"
+            className="px-8 py-4 rounded-full glass font-semibold border-white/20 hover:bg-white/10 transition-all focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-neon"
+          >
             Ver servicios
-          </button>
+          </Link>
         </motion.div>
       </motion.div>
 
