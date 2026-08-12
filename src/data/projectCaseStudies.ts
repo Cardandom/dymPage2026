@@ -18,6 +18,13 @@ import theCocoTravelGroup from '../assets/projects/the-coco-travel/the-coco-trav
 import theCocoTravelLogo from '../assets/projects/the-coco-travel/the-coco-travel-logo.png';
 import theCocoTravelPeru from '../assets/projects/the-coco-travel/the-coco-travel-peru.jpg';
 import theCocoTravelQuito from '../assets/projects/the-coco-travel/the-coco-travel-quito.jpg';
+import unisexMarysCatalog from '../assets/projects/unisex-marys/unisex-marys-catalog.webp';
+import unisexMarysContact from '../assets/projects/unisex-marys/unisex-marys-contact.webp';
+import unisexMarysGallery from '../assets/projects/unisex-marys/unisex-marys-gallery.webp';
+import unisexMarysHome from '../assets/projects/unisex-marys/unisex-marys-home.webp';
+import unisexMarysLogo from '../assets/projects/unisex-marys/unisex-marys-logo.webp';
+import unisexMarysPromotions from '../assets/projects/unisex-marys/unisex-marys-promotions.webp';
+import unisexMarysServices from '../assets/projects/unisex-marys/unisex-marys-services.webp';
 import unaVidaDiagnosticSolution from '../assets/projects/una-vida-consciente/una-vida-diagnostic-solution.webp';
 import unaVidaFaq from '../assets/projects/una-vida-consciente/una-vida-faq.webp';
 import unaVidaHeroDesktop from '../assets/projects/una-vida-consciente/una-vida-hero-desktop.webp';
@@ -397,6 +404,104 @@ export const projectCaseStudies = [
     order: 4,
     ariaLabel: 'Ver caso de estudio de Reina Sophia Residences',
     badge: 'Proyecto real',
+  },
+  {
+    slug: 'unisex-marys',
+    name: 'UNISEX MARY’S',
+    service: 'Sitio web para spa y salón de belleza',
+    shortDescription:
+      'Sitio web responsive para presentar servicios de belleza y bienestar, promociones, resultados, ubicación y canales de contacto dentro de una experiencia visual fácil de explorar.',
+    longDescription: [
+      'Unisex Mary’s necesitaba consolidar su presencia digital en una experiencia capaz de presentar con claridad su oferta de belleza, cuidado personal y bienestar en Medellín.',
+      'El sitio organiza categorías, promociones y un catálogo con búsqueda y filtros para facilitar la exploración de tratamientos faciales, peluquería, masajes, uñas, servicios corporales y cuidado masculino.',
+      'La experiencia conecta el descubrimiento de cada servicio con WhatsApp, información de contacto y acceso a la ubicación del negocio, dentro de una navegación responsive para dispositivos móviles y de escritorio.',
+    ],
+    coverImage: {
+      src: unisexMarysHome,
+      alt: 'Página principal del sitio web de Unisex Mary’s',
+    },
+    logo: {
+      src: unisexMarysLogo,
+      alt: 'Logo de Unisex Mary’s',
+    },
+    gallery: [
+      {
+        src: unisexMarysServices,
+        alt: 'Categorías de servicios de belleza y bienestar de Unisex Mary’s',
+      },
+      {
+        src: unisexMarysPromotions,
+        alt: 'Promociones y experiencias especiales presentadas por Unisex Mary’s',
+      },
+      {
+        src: unisexMarysCatalog,
+        alt: 'Catálogo con búsqueda y filtros de servicios de Unisex Mary’s',
+      },
+      {
+        src: unisexMarysGallery,
+        alt: 'Galería interactiva de transformaciones de Unisex Mary’s',
+      },
+      {
+        src: unisexMarysContact,
+        alt: 'Sección de ubicación y contacto de Unisex Mary’s en Medellín',
+      },
+    ],
+    tags: ['Diseño web', 'Beauty & Wellness', 'Catálogo de servicios', 'Experiencia responsive'],
+    technologies: [
+      'Next.js',
+      'React',
+      'TypeScript',
+      'Tailwind CSS',
+      'GSAP',
+      'Three.js',
+      'React Three Fiber',
+    ],
+    services: [
+      'Diseño y desarrollo web',
+      'Arquitectura de información',
+      'Catálogo digital con categorías, búsqueda y filtros',
+      'Presentación de promociones y transformaciones',
+      'Integración de contacto directo mediante WhatsApp',
+      'Integración de ubicación mediante Google Maps',
+      'Diseño responsive',
+      'SEO técnico y datos estructurados del negocio',
+      'Animaciones e interacciones visuales',
+    ],
+    challenges: [
+      'Organizar una oferta amplia de servicios sin saturar la navegación',
+      'Facilitar la búsqueda y exploración de tratamientos por categoría',
+      'Presentar promociones y resultados de manera visible dentro del recorrido',
+      'Mantener una experiencia clara y funcional en dispositivos móviles',
+      'Conectar cada servicio con canales directos de contacto y ubicación',
+    ],
+    solution: [
+      'Experiencia visual alineada con la identidad del spa y salón de belleza',
+      'Catálogo interactivo organizado por categorías, búsqueda textual y filtros',
+      'Sección dedicada a promociones con acceso directo a WhatsApp',
+      'Galería interactiva para comparar transformaciones y resultados',
+      'Información del negocio, horarios, teléfono y ubicación centralizados',
+      'Navegación responsive con CTAs de WhatsApp accesibles durante el recorrido',
+      'Metadata, sitemap, manifest y datos estructurados para SEO local',
+    ],
+    results: [
+      'Sitio web publicado en el dominio oficial de Unisex Mary’s',
+      'Catálogo digital de servicios disponible con búsqueda y filtros',
+      'Promociones y transformaciones integradas dentro de la experiencia',
+      'WhatsApp, teléfono, horarios y ubicación centralizados en el sitio',
+      'Experiencia responsive terminada para escritorio y dispositivos móviles',
+      'Presencia digital propia disponible en producción',
+    ],
+    websiteUrl: 'https://unisexmarysspa.com/',
+    instagramUrl: undefined,
+    status: 'published',
+    seoTitle: 'Unisex Mary’s | Sitio web para spa y salón de belleza',
+    seoDescription:
+      'Caso de desarrollo web para Unisex Mary’s: experiencia responsive con catálogo de servicios, promociones, transformaciones, ubicación y contacto por WhatsApp.',
+    ogImage: unisexMarysHome,
+    featured: true,
+    order: 5,
+    ariaLabel: 'Ver caso de éxito de Unisex Mary’s',
+    badge: 'Sitio publicado',
   },
   {
     slug: 'the-coco-travel',
