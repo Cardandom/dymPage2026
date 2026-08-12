@@ -3,8 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'motion/react';
-import { Menu, X, ArrowUpRight } from 'lucide-react';
-import { WHATSAPP_MESSAGES, getWhatsAppUrl } from '@/src/config/contact';
+import { Menu, X } from 'lucide-react';
 import { cn } from '@/src/lib/utils';
 import BrandLogo from './BrandLogo';
 
@@ -13,14 +12,11 @@ type NavbarProps = {
 };
 
 const navLinks = [
-  { name: 'Inicio', href: '/#hero' },
   { name: 'Servicios', href: '/#services' },
-  { name: 'IA', href: '/#ai' },
-  { name: 'Casos', href: '/#cases' },
+  { name: 'Estrategia IA', href: '/#ai' },
+  { name: 'Casos de éxito', href: '/#cases' },
   { name: 'Contacto', href: '/#contact' },
 ];
-
-const scheduleCallUrl = getWhatsAppUrl(WHATSAPP_MESSAGES.scheduleCall);
 
 export default function Navbar({ brandLogo }: NavbarProps) {
   const [isScrolled, setIsScrolled] = React.useState(false);
@@ -54,31 +50,26 @@ export default function Navbar({ brandLogo }: NavbarProps) {
         isScrolled ? "bg-brand-purple/80 backdrop-blur-md border-b border-white/10 py-2" : "bg-transparent"
       )}
     >
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <div className="flex items-center">
+      <div className="mx-auto grid max-w-7xl grid-cols-[1fr_auto_1fr] items-center">
+        <Link
+          href="/#hero"
+          aria-label="Ir al inicio de DYM Digital"
+          className="w-fit justify-self-start rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-neon [&>*]:!h-[4.375rem] [&>*]:!w-[5.75rem] sm:[&>*]:!h-[6.125rem] sm:[&>*]:!w-[8.125rem]"
+        >
           {brandLogo ?? <BrandLogo className="h-[4.5rem] w-24 sm:h-20 sm:w-28" compact />}
-        </div>
+        </Link>
 
         {/* Desktop Links */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden items-center gap-5 md:flex lg:gap-8">
           {navLinks.map((link) => (
             <Link
               key={link.name} 
               href={link.href}
-              className="rounded-sm text-sm font-medium text-white/70 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-neon"
+              className="whitespace-nowrap rounded-sm text-sm font-medium text-white/70 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-neon"
             >
               {link.name}
             </Link>
           ))}
-          <a
-            href={scheduleCallUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group flex items-center gap-1 rounded-full border-white/20 px-6 py-2 font-semibold glass transition-all hover:bg-brand-neon focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-neon"
-          >
-            <span className="text-white group-hover:text-brand-purple transition-colors">Agendar Call</span>
-            <ArrowUpRight size={16} className="text-brand-neon group-hover:text-brand-purple" />
-          </a>
         </div>
 
         {/* Mobile Menu Toggle */}
@@ -87,7 +78,7 @@ export default function Navbar({ brandLogo }: NavbarProps) {
           aria-label={mobileMenuOpen ? 'Cerrar menú de navegación' : 'Abrir menú de navegación'}
           aria-expanded={mobileMenuOpen}
           aria-controls="mobile-navigation"
-          className="rounded-md text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-neon md:hidden"
+          className="justify-self-end rounded-md text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-neon md:hidden"
           onClick={() => setMobileMenuOpen((isOpen) => !isOpen)}
         >
           {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
@@ -114,15 +105,6 @@ export default function Navbar({ brandLogo }: NavbarProps) {
                 {link.name}
               </Link>
             ))}
-            <a
-              href={scheduleCallUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => setMobileMenuOpen(false)}
-              className="w-full rounded-xl bg-brand-neon py-4 text-center font-bold text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
-            >
-              Agendar Call
-            </a>
           </motion.div>
         )}
       </AnimatePresence>
