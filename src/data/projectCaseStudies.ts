@@ -6,6 +6,21 @@ import kairosProjectBonaVista from '../assets/projects/kairos-web/kairos-project
 import kairosServices from '../assets/projects/kairos-web/kairos-services.webp';
 import kairosIGAsset from '../assets/projects/kairosIG.webp';
 import kairosLogoAsset from '../assets/projects/kairos-logo.webp';
+import mundoBusinessColorSystem from '../assets/projects/mundo-business-services/mundo-business-color-system.webp';
+import mundoBusinessCover from '../assets/projects/mundo-business-services/mundo-business-cover.webp';
+import mundoBusinessIdentitySystem from '../assets/projects/mundo-business-services/mundo-business-identity-system.webp';
+import mundoBusinessLogo from '../assets/projects/mundo-business-services/mundo-business-logo.png';
+import mundoBusinessLogoVariations from '../assets/projects/mundo-business-services/mundo-business-logo-variations.webp';
+import mundoBusinessStationery from '../assets/projects/mundo-business-services/mundo-business-stationery.webp';
+import mundoBusinessTypography from '../assets/projects/mundo-business-services/mundo-business-typography.webp';
+import mundoBusinessVisualLanguage from '../assets/projects/mundo-business-services/mundo-business-visual-language.webp';
+import pureMedicalApplications from '../assets/projects/pure-medical/pure-medical-applications.webp';
+import pureMedicalCommercial from '../assets/projects/pure-medical/pure-medical-commercial.webp';
+import pureMedicalCorporatePresence from '../assets/projects/pure-medical/pure-medical-corporate-presence.webp';
+import pureMedicalCover from '../assets/projects/pure-medical/pure-medical-cover.webp';
+import pureMedicalIdentity from '../assets/projects/pure-medical/pure-medical-identity.webp';
+import pureMedicalLogo from '../assets/projects/pure-medical/pure-medical-logo.png';
+import pureMedicalProduct from '../assets/projects/pure-medical/pure-medical-product.webp';
 import reinaSophiaContact from '../assets/projects/reina-sophia/reina-sophia-contact.webp';
 import reinaSophiaGallery from '../assets/projects/reina-sophia/reina-sophia-gallery.webp';
 import reinaSophiaHome from '../assets/projects/reina-sophia/reina-sophia-home.webp';
@@ -47,6 +62,7 @@ export type ProjectCaseStudy = {
   name: string;
   service: string;
   shortDescription: string;
+  heroDescription?: string;
   longDescription?: readonly string[];
 
   coverImage: ProjectMedia;
@@ -67,6 +83,7 @@ export type ProjectCaseStudy = {
   seoTitle?: string;
   seoDescription?: string;
   ogImage?: StaticImageData | string;
+  ctaTitle?: string;
 
   featured: boolean;
   order: number;
@@ -593,6 +610,224 @@ export const projectCaseStudies = [
     order: 6,
     ariaLabel: 'Ver caso de éxito de The Coco Travel',
     badge: 'Sitio publicado',
+  },
+  {
+    slug: 'mundo-business-services',
+    name: 'MUNDO BUSINESS SERVICES',
+    service: 'Branding e identidad corporativa',
+    shortDescription:
+      'Desarrollo de una identidad corporativa integral para Mundo Business Services, definiendo su sistema visual, lineamientos de marca y aplicaciones para mantener una comunicación profesional y consistente.',
+    longDescription: [
+      'Mundo Business Services necesitaba estructurar una identidad visual capaz de transmitir profesionalismo, confianza y solidez dentro de una propuesta empresarial vinculada a servicios y educación financiera.',
+      'El proyecto se desarrolló a partir de la creación y documentación de un sistema corporativo que permitiera utilizar la marca de manera consistente en diferentes formatos, evitando variaciones que pudieran afectar su reconocimiento visual.',
+      'El resultado fue consolidado en un manual de identidad corporativa que reúne los principales lineamientos gráficos de la marca y sirve como referencia para futuras aplicaciones de comunicación, diseño y material empresarial.',
+    ],
+    coverImage: {
+      src: mundoBusinessCover,
+      alt: 'Presentación editorial de la identidad corporativa de Mundo Business Services',
+    },
+    logo: {
+      src: mundoBusinessLogo,
+      alt: 'Logo de Mundo Business Services',
+    },
+    gallery: [
+      {
+        src: mundoBusinessIdentitySystem,
+        alt: 'Construcción del isotipo y sistema visual de Mundo Business Services',
+        caption:
+          '01 — Construcción de identidad. Desarrollo del sistema visual y definición de los elementos que conforman la identidad de Mundo Business Services.',
+      },
+      {
+        src: mundoBusinessColorSystem,
+        alt: 'Paleta cromática corporativa de Mundo Business Services',
+        caption:
+          '02 — Sistema cromático. Paleta corporativa orientada a transmitir confianza, estabilidad y profesionalismo.',
+      },
+      {
+        src: mundoBusinessLogoVariations,
+        alt: 'Versiones positivas, negativas y de alto contraste de la marca',
+        caption:
+          '03 — Adaptabilidad de la marca. Versiones y criterios de aplicación preparados para distintos contextos visuales.',
+      },
+      {
+        src: mundoBusinessTypography,
+        alt: 'Sistema tipográfico de la identidad corporativa',
+        caption:
+          '04 — Sistema tipográfico. Jerarquías y familias tipográficas organizadas para construir una comunicación consistente.',
+      },
+      {
+        src: mundoBusinessStationery,
+        alt: 'Mockup editorial de papelería y tarjetas corporativas sin datos personales',
+        caption:
+          '05 — Aplicaciones corporativas. Traslado del sistema de identidad a papelería empresarial sin exponer información privada.',
+      },
+      {
+        src: mundoBusinessVisualLanguage,
+        alt: 'Composición del sistema de comunicación visual de la marca',
+        caption:
+          '06 — Sistema de comunicación visual. Integración del logotipo, color, tipografía y recursos gráficos para futuras piezas.',
+      },
+    ],
+    tags: ['Branding', 'Identidad visual', 'Manual de marca', 'Diseño corporativo'],
+    technologies: [],
+    services: [
+      'Branding e identidad corporativa',
+      'Diseño y estructuración de logotipo e isotipo',
+      'Sistema cromático',
+      'Sistema tipográfico',
+      'Normas de construcción y protección de marca',
+      'Versiones y adaptaciones del logotipo',
+      'Definición de usos correctos e incorrectos',
+      'Diseño de fondos corporativos',
+      'Aplicaciones de papelería corporativa',
+      'Diseño de piezas promocionales',
+      'Manual de identidad corporativa',
+    ],
+    challenges: [
+      'Construir una identidad visual reconocible y coherente con la actividad de la empresa',
+      'Establecer criterios claros para el uso correcto del logotipo y sus diferentes versiones',
+      'Definir un sistema consistente de colores, tipografías y elementos gráficos',
+      'Prevenir alteraciones o aplicaciones incorrectas de la identidad',
+      'Trasladar el nuevo sistema visual a piezas corporativas de uso real',
+      'Crear una guía capaz de mantener la consistencia de la marca al desarrollar nuevos materiales',
+    ],
+    solution: [
+      'Desarrollo y estructuración de la identidad visual de Mundo Business Services',
+      'Definición del logotipo, isotipo y criterios de composición',
+      'Establecimiento de áreas de protección y reglas para preservar la legibilidad de la marca',
+      'Desarrollo de un sistema cromático corporativo y alternativas de aplicación',
+      'Definición de lineamientos tipográficos para diferentes niveles de comunicación',
+      'Creación de versiones de la marca para distintos fondos y escenarios de reproducción',
+      'Documentación de usos permitidos e incorrectos',
+      'Diseño de recursos y aplicaciones corporativas alineados con la nueva identidad',
+      'Consolidación de los criterios de marca dentro de un manual de identidad corporativa',
+    ],
+    results: [
+      'Identidad corporativa documentada mediante un sistema visual estructurado',
+      'Criterios de uso de marca definidos para mantener consistencia entre diferentes aplicaciones',
+      'Sistema de colores y tipografías establecido para la comunicación corporativa',
+      'Versiones y reglas de aplicación del logotipo organizadas para diferentes contextos visuales',
+      'Aplicaciones corporativas desarrolladas como referencia para el uso real de la identidad',
+      'Manual de identidad disponible como guía interna para futuras piezas de comunicación y diseño',
+    ],
+    status: 'published',
+    seoTitle: 'Mundo Business Services | Branding e identidad corporativa',
+    seoDescription:
+      'Caso de branding para Mundo Business Services: identidad visual, sistema cromático, tipografía, aplicaciones corporativas y manual de marca.',
+    ogImage: mundoBusinessCover,
+    ctaTitle: '¿Necesitas construir una identidad sólida para tu empresa?',
+    featured: true,
+    order: 7,
+    ariaLabel: 'Ver caso de éxito de Mundo Business Services',
+    badge: 'Proyecto real',
+  },
+  {
+    slug: 'pure-medical',
+    name: 'PURE MEDICAL',
+    service: 'Branding e identidad visual',
+    shortDescription:
+      'Desarrollo de una identidad visual profesional para Pure Medical, distribuidora de productos médicos, trasladando la marca a diferentes aplicaciones corporativas y comerciales para construir una presencia coherente dentro del sector salud.',
+    heroDescription:
+      'Desarrollo de una identidad visual orientada al sector médico, diseñada para proyectar profesionalismo, confianza y consistencia en diferentes puntos de contacto de la marca. El proyecto contempla la aplicación del sistema visual sobre elementos corporativos, materiales promocionales y presentaciones vinculadas a productos médicos.',
+    longDescription: [
+      'Pure Medical es una empresa dedicada a la distribución de productos médicos que necesitaba construir una presencia visual reconocible y profesional para respaldar su comunicación corporativa y comercial.',
+      'El proyecto se enfocó en desarrollar una identidad capaz de funcionar de forma consistente en diferentes aplicaciones, manteniendo una estética limpia, moderna y asociada al sector salud.',
+      'La identidad fue trasladada a diversos puntos de contacto de la marca, desde materiales corporativos y promocionales hasta aplicaciones relacionadas con la presentación de productos.',
+    ],
+    coverImage: {
+      src: pureMedicalCover,
+      alt: 'Identidad corporativa de Pure Medical aplicada a papelería y materiales empresariales',
+    },
+    logo: {
+      src: pureMedicalLogo,
+      alt: 'Logotipo de Pure Medical',
+    },
+    gallery: [
+      {
+        src: pureMedicalIdentity,
+        alt: 'Sistema visual de Pure Medical aplicado a materiales corporativos',
+        caption:
+          '01 — Identidad corporativa. Presentación del sistema visual de Pure Medical aplicado a diferentes materiales empresariales y puntos de contacto de la marca.',
+      },
+      {
+        src: pureMedicalApplications,
+        alt: 'Identidad de Pure Medical aplicada a camisetas y taza corporativa',
+        caption:
+          '02 — Aplicaciones de marca. Adaptación de la identidad a elementos promocionales y merchandising corporativo, manteniendo reconocimiento y consistencia visual.',
+      },
+      {
+        src: pureMedicalCorporatePresence,
+        alt: 'Papelería y documentos corporativos con la identidad visual de Pure Medical',
+        caption:
+          '03 — Presencia corporativa. Aplicación del sistema gráfico sobre papelería, documentos y diferentes materiales utilizados en la comunicación empresarial.',
+      },
+      {
+        src: pureMedicalProduct,
+        alt: 'Aplicación visual de Afebril Parche Frío presentada por un profesional médico',
+        caption:
+          '04 — Identidad de producto. Desarrollo y aplicación visual para Afebril — Parche Frío, trasladando criterios gráficos hacia la presentación de un producto del sector médico.',
+      },
+      {
+        src: pureMedicalCommercial,
+        alt: 'Presentación comercial de Afebril Parche Frío en un entorno de farmacia',
+        caption:
+          '05 — Aplicación comercial. Presentación del producto dentro de un entorno relacionado con salud y distribución farmacéutica, reforzando la conexión entre identidad corporativa y producto.',
+      },
+    ],
+    tags: ['Branding', 'Identidad visual', 'Diseño corporativo', 'Packaging'],
+    technologies: [],
+    services: [
+      'Branding',
+      'Identidad visual',
+      'Diseño de logotipo',
+      'Sistema visual corporativo',
+      'Papelería corporativa',
+      'Aplicaciones de marca',
+      'Merchandising corporativo',
+      'Aplicaciones digitales',
+      'Diseño gráfico',
+      'Presentación visual de productos',
+      'Packaging / identidad de producto',
+    ],
+    challenges: [
+      'Construir una identidad visual profesional para una empresa del sector médico',
+      'Conseguir una imagen limpia y fácilmente reconocible',
+      'Crear consistencia entre diferentes aplicaciones de la marca',
+      'Adaptar la identidad tanto a materiales corporativos como promocionales',
+      'Permitir que la marca funcionara correctamente en soportes físicos y digitales',
+      'Desarrollar una estética que transmitiera confianza y profesionalismo',
+      'Llevar el lenguaje visual corporativo hacia aplicaciones vinculadas con productos médicos',
+    ],
+    solution: [
+      'Desarrollo de la identidad visual de Pure Medical',
+      'Creación y aplicación del logotipo corporativo',
+      'Desarrollo de recursos gráficos asociados a la marca',
+      'Aplicación de identidad sobre papelería y materiales corporativos',
+      'Adaptación de marca a soportes promocionales',
+      'Desarrollo de aplicaciones para prendas y merchandising',
+      'Aplicación de identidad en entornos digitales',
+      'Desarrollo visual para presentación de productos',
+      'Creación de piezas destinadas a mantener consistencia entre diferentes puntos de contacto de la empresa',
+    ],
+    results: [
+      'Identidad visual aplicada de forma consistente en diferentes soportes',
+      'Presencia corporativa estructurada alrededor de un mismo lenguaje gráfico',
+      'Marca adaptable a aplicaciones físicas y digitales',
+      'Sistema visual preparado para diferentes puntos de contacto empresariales',
+      'Integración de la identidad dentro de materiales promocionales',
+      'Aplicación gráfica desarrollada para la presentación de productos médicos',
+      'Mayor coherencia visual entre comunicación corporativa, merchandising y producto',
+    ],
+    status: 'published',
+    seoTitle: 'Pure Medical | Branding e identidad visual',
+    seoDescription:
+      'Caso de branding para Pure Medical: identidad visual aplicada a materiales corporativos, promocionales y presentaciones de producto del sector médico.',
+    ogImage: pureMedicalCover,
+    ctaTitle: '¿Tu empresa necesita una identidad que transmita confianza?',
+    featured: true,
+    order: 8,
+    ariaLabel: 'Ver caso de éxito de Pure Medical',
+    badge: 'Proyecto real',
   },
 ] as const satisfies readonly ProjectCaseStudy[];
 
