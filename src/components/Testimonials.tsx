@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { motion } from 'motion/react';
 import { Quote } from 'lucide-react';
+import unisexMarysLogo from '@/src/assets/projects/unisex-marys/unisex-marys-logo.webp';
 
 const testimonials = [
   {
@@ -18,10 +19,10 @@ const testimonials = [
     avatar: "https://i.pravatar.cc/150?u=2"
   },
   {
-    name: "Marcus Kael",
-    role: "Founder, Zenith Labs",
-    text: "En menos de 6 meses duplicamos nuestra facturación. DYM Digital no es una agencia, es un partner tecnológico fundamental.",
-    avatar: "https://i.pravatar.cc/150?u=3"
+    name: "Unisex Mary’s",
+    role: "Spa y peluquería",
+    text: "Me encantó mi página web, tal cual como quería que se reflejara mi spa y peluquería, muy cumplidos y precios razonables.",
+    avatar: unisexMarysLogo
   }
 ];
 

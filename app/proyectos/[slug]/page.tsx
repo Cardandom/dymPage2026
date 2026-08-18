@@ -136,7 +136,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 {project.name}
               </h1>
               <p className="mt-7 max-w-3xl text-base leading-8 text-slate-300 sm:text-lg">
-                {project.shortDescription}
+                {project.heroDescription ?? project.shortDescription}
               </p>
 
               {project.tags.length > 0 && (
@@ -299,7 +299,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         <section className="mt-24 overflow-hidden rounded-[2rem] border border-white/10 bg-linear-to-br from-brand-purple/60 via-brand-purple/30 to-brand-neon/15 px-6 py-14 text-center shadow-[0_30px_100px_rgba(60,0,190,0.2)] sm:mt-32 sm:px-12 sm:py-20">
           <p className="font-mono text-xs uppercase tracking-[0.24em] text-brand-neon">Tu próximo proyecto</p>
           <h2 className="mx-auto mt-4 max-w-3xl text-3xl font-black tracking-tight text-white sm:text-5xl">
-            ¿Necesitas una solución digital como esta?
+            {project.ctaTitle ?? '¿Necesitas una solución digital como esta?'}
           </h2>
           <a
             href={projectWhatsAppUrl}
