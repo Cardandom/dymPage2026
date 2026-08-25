@@ -4,10 +4,17 @@ import React from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import NextBrandLogo from './NextBrandLogo';
 
+const subscribeToHydration = () => () => {};
+
 export default function NextPreloader() {
   const [visible, setVisible] = React.useState(true);
+  const hydrated = React.useSyncExternalStore(
+    subscribeToHydration,
+    () => true,
+    () => false,
+  );
   const shouldReduceMotion = useReducedMotion();
-  const reduceMotion = shouldReduceMotion ?? false;
+  const reduceMotion = hydrated && shouldReduceMotion === true;
 
   React.useEffect(() => {
     const timer = window.setTimeout(() => {
