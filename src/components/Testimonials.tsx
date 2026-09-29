@@ -4,19 +4,21 @@ import Image from 'next/image';
 import { motion } from 'motion/react';
 import { Quote } from 'lucide-react';
 import unisexMarysLogo from '@/src/assets/projects/unisex-marys/unisex-marys-logo.webp';
+import karlyPerazaPhoto from '@/src/assets/testimonials/karly-peraza.webp';
+import mariaGracielaLoboPhoto from '@/src/assets/testimonials/maria-graciela-lobo.webp';
 
 const testimonials = [
   {
-    name: "Alexander Vance",
-    role: "CEO, LuxGlobal",
-    text: "DYM Digital transformó por completo nuestra percepción de marca. El ROI que logramos gracias a su IA no se compara con nada que hayamos visto antes.",
-    avatar: "https://i.pravatar.cc/150?u=1"
+    name: "Lcda. Karly Peraza",
+    role: "Coordinadora de Gestión Organizacional, JBSECO",
+    text: "DYM Digital ha sido un aliado fundamental en el diseño, la ejecución y la organización de todo nuestro sistema comercial y digital. Su aporte nos permitió ordenar cada proceso y construir una presencia de marca sólida y coherente.",
+    avatar: karlyPerazaPhoto
   },
   {
-    name: "Elena Rodriguez",
-    role: "Marketing Director, NextGen",
-    text: "La atención al detalle y la capacidad de innovación de su equipo es de otro planeta. Son los mejores en lo que hacen, sin duda alguna.",
-    avatar: "https://i.pravatar.cc/150?u=2"
+    name: "Arq. María Graciela Lobo",
+    role: "CEO, Kairos Design & Construction",
+    text: "Gracias a DYM Digital logramos entrar al mercado digital con una estrategia clara. Su gestión de nuestras redes sociales y el desarrollo de la página web nos ayudaron a fortalecer nuestra presencia y conectar con nuevos clientes.",
+    avatar: mariaGracielaLoboPhoto
   },
   {
     name: "Unisex Mary’s",
@@ -53,7 +55,7 @@ export default function Testimonials() {
                   alt={t.name}
                   width={48}
                   height={48}
-                  className="w-12 h-12 rounded-full grayscale border border-white/10"
+                  className="w-12 h-12 rounded-full object-cover grayscale border border-white/10"
                   loading="lazy"
                   decoding="async"
                   referrerPolicy="no-referrer"

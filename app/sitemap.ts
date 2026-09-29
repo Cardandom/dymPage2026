@@ -18,5 +18,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     ...projectEntries,
+    {
+      url: `${HOME_URL}politica-de-privacidad`,
+      changeFrequency: "yearly",
+      priority: 0.2,
+    },
+    {
+      url: `${HOME_URL}politica-de-cookies`,
+      changeFrequency: "yearly",
+      priority: 0.2,
+    },
   ];
 }

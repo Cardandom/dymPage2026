@@ -9,6 +9,8 @@ import {
   SITE_TITLE,
 } from "@/src/config/site";
 import WhatsAppFloatingButton from "@/src/components/WhatsAppFloatingButton";
+import CookieConsent from "@/src/components/CookieConsent";
+import GoogleTagManager from "@/src/components/GoogleTagManager";
 import "./globals.css";
 
 const montserrat = Montserrat({
@@ -93,8 +95,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="es" className={`${montserrat.variable} ${jetBrainsMono.variable}`}>
       <body className="overflow-x-hidden bg-black text-white antialiased">
+        <GoogleTagManager />
         {children}
         <WhatsAppFloatingButton />
+        <CookieConsent />
       </body>
     </html>
   );

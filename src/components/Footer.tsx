@@ -5,6 +5,7 @@ import { motion } from 'motion/react';
 import { Instagram } from 'lucide-react';
 import type { ReactNode } from 'react';
 import { CONTACT_EMAIL, CONTACT_EMAIL_URL, SOCIAL_LINKS } from '@/src/config/contact';
+import { COOKIE_PREFERENCES_EVENT } from '@/src/lib/cookieConsent';
 
 type FooterProps = {
   year: number;
@@ -88,8 +89,23 @@ export default function Footer({ year, brandLogo }: FooterProps) {
           </div>
         </div>
 
-        <div className="pt-10 border-t border-slate-200 text-center text-slate-500 text-sm md:text-left">
-          <p>(c) {year} DYM Digital Agency. Todos los derechos reservados.</p>
+        <div className="flex flex-col items-center gap-5 border-t border-slate-200 pt-10 text-center text-sm text-slate-500 md:flex-row md:justify-between md:text-left">
+          <p>© {year} DYM Digital. Todos los derechos reservados.</p>
+          <nav aria-label="Enlaces legales" className="flex flex-wrap items-center justify-center gap-x-5 gap-y-3 md:justify-end">
+            <Link href="/politica-de-privacidad/" className="rounded-sm transition-colors hover:text-brand-neon focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-neon">
+              Política de Privacidad
+            </Link>
+            <Link href="/politica-de-cookies/" className="rounded-sm transition-colors hover:text-brand-neon focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-neon">
+              Política de Cookies
+            </Link>
+            <button
+              type="button"
+              onClick={() => window.dispatchEvent(new Event(COOKIE_PREFERENCES_EVENT))}
+              className="rounded-sm transition-colors hover:text-brand-neon focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-neon"
+            >
+              Preferencias de cookies
+            </button>
+          </nav>
         </div>
       </div>
     </footer>
